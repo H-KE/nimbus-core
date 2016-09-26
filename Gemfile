@@ -17,6 +17,15 @@ gem 'jbuilder', '~> 2.6'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# For authenticating the user
+gem 'devise_token_auth'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+
+# Help with CSRF/CORS
+gem 'rack-cors', :require => 'rack/cors'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-
-  # helper_method :resource, :collection
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  # protect_from_forgery with: :null_session
 
   def new
    initialize_resource
