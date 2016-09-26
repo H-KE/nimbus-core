@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160926201305) do
     t.boolean  "pickup"
     t.string   "email"
     t.string   "phone_number"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
