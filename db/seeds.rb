@@ -8,6 +8,17 @@
 
 retailers = Retailer.create([
   {
+    image_url: 'https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad32b3f8baf35958c26d38/56b93a2f01dbae64ff7226d5/1456210131673/279A6571.jpg?format=500w',
+    name: 'Alair Vaporizer',
+    address: '588 Dufferin Street, M4A 2M5',
+    description: 'Extend the good life to the air you breathe. With a subtle profile and a joyful disposition, an Alair vaporizer is enjoyable, portable and rarely out of place. Whatever your lifestyle, just plug, vape and play.',
+    mail: true,
+    delivery: true,
+    pickup: true,
+    email: "demo@nimbusfly.co",
+    phone_number: "9999999999"
+  },
+  {
     image_url: 'http://cdn.theweedblog.com/wp-content/uploads//Medical-Marijuana2.jpg',
     name: 'Modern Apothecarium',
     address: '474 Victoria Park Ave, M4A 2M5',
