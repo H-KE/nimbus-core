@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   namespace :api do
     mount_devise_token_auth_for 'User', at: 'auth'
     resources :products, only: [:index, :show]
-    resources :retailers, only: [:index, :show]
+    resources :retailers do
+      collection do
+        get :channel
+      end
+    end
   end
 end

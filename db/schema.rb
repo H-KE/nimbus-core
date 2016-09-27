@@ -10,17 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926201305) do
+ActiveRecord::Schema.define(version: 20160927014025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.integer  "price"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "retailer_id"
+    t.json     "images"
+    t.json     "prices"
+    t.json     "price_labels"
+    t.decimal  "thc"
+    t.decimal  "cbd"
+    t.string   "subspecies"
+    t.string   "category"
+    t.index ["retailer_id"], name: "index_products_on_retailer_id", using: :btree
   end
 
   create_table "retailers", force: :cascade do |t|
@@ -67,4 +75,5 @@ ActiveRecord::Schema.define(version: 20160926201305) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "products", "retailers"
 end
