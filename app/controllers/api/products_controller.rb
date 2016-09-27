@@ -1,6 +1,6 @@
 class Api::ProductsController < ApplicationController
   def index
-   @products = Product.all
+   @products = Retailer.find(params[:retailer_id]).products
   end
 
   def show

@@ -8,7 +8,7 @@
 
 users = user = User.create! :email => 'admin@nimbusfly.co', :password => 'topsecret', :password_confirmation => 'topsecret'
 
-retailers = Retailer.create([
+retailers = Retailer.create!([
   {
     image_url: 'https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad32b3f8baf35958c26d38/56b93a2f01dbae64ff7226d5/1456210131673/279A6571.jpg?format=500w',
     name: 'Alair Vaporizer',
@@ -32,14 +32,14 @@ retailers = Retailer.create([
     phone_number: "9999999999"
   },
   {
-    image_url:"'http://www.cannabistherapyinstitute.com/images/cross.only.g",
-    name: 'The Green Cross',
-    address: '2012 Neilson Avenue, M1M 1V1',
-    description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
-    mail: true,
-    delivery: true,
-    pickup: true,
-    email: "demo@nimbusfly.co",
+  image_url:"http://www.cannabistherapyinstitute.com/images/cross.only.gif",
+  name: 'The Green Cross',
+  address: '2012 Neilson Avenue, M1M 1V1',
+  description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
+  mail: true,
+  delivery: true,
+  pickup: true,
+  email: "demo@nimbusfly.co",
     phone_number: "9999999999"
   },
   {
@@ -67,9 +67,61 @@ retailers = Retailer.create([
 ])
 
 retailers.each do |retailer|
-  retailer.products.create([
-    {
-        name: "OG Kush",
+  if retailer.name == 'Alair Vaporizer'
+    retailer.products.create!([
+      {
+        name: "Vaporizer Starter Kit",
+        images: ["https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/56b93c5662cd942d9bbe7c5e/1454980185264/279A61491.jpg?format=1500w", "https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/56b93c568a65e27e69cd08f2/1456207918261/279A61411.jpg?format=1500w", "https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/56cbf7f11bbee05e52d8373e/1456207918075/279A6219.jpg?format=1500w", "https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/56b93c578a65e27e69cd08f6/1456207918264/279A60111.jpg?format=1500w"],
+        prices: [125],
+        price_labels: ["each"],
+        description: "Dressed all in black with a touch of gold, the classic ALAIR Vaporizers are well-suited to any occasion. Each vaporizer comes with a filled cartridge that will last 150+ draws and USB charger adaptor.
+(THC) Tetrahydrocannabinol: 274mg(68%) 1.82mg Per Draw
+(CBD) Cannabidiol: 1.4mg(0.35%) 0.01mg Per Draw
+(CBN) Cannabinol: 0mg(0%) 0.00mg Per Draw
+
+Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol.",
+        thc: 68,
+        cbd: 0.35,
+        subspecies: "Hybrid",
+        category: "Vaporizers"
+      },
+      {
+        name: "Filled Cartridge - Single",
+        images: ["https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/577d1cc0ff7c50f540e26b7b/1467817153466/279A6192%2Bsingle.jpg?format=1500w", "https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/577d1cbcff7c50f540e26b5e/1467817149101/1cartridge.jpg?format=1500w"],
+        prices: [75],
+        price_labels: ["each"],
+        description: "Each cartridge comes filled with 150+ draws, and is easy to load into your existing Alair vaporizer.
+ Girl Scout Cookies Quad A Buds used to give testing results in each:
+ (THC) Tetrahydrocannabinol: 274mg(68%) 1.82mg Per Draw
+ (CBD) Cannabidiol: 1.4mg(0.35%) 0.01mg Per Draw
+ (CBN) Cannabinol: 0mg(0%) 0.00mg Per Draw
+
+ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol.",
+        thc: 68,
+        cbd: 0.35,
+        subspecies: "Hybrid",
+        category: "Cartridges"
+      },
+      {
+        name: "Filled Cartridge - Single (CBD)",
+        images: ["https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/577d1cc0ff7c50f540e26b7b/1467817153466/279A6192%2Bsingle.jpg?format=1500w", "https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad354489a60aa6dae3a3c8/577d1cbcff7c50f540e26b5e/1467817149101/1cartridge.jpg?format=1500w"],
+        prices: [50],
+        price_labels: ["each"],
+        description: "Each cartridge comes filled with 150+ draws, and is easy to load into your existing ALAIR Vaporizer.
+ Quantum Kush:
+ Tetrahydrocannibinol (THC) 185mg(42%) 1.2mg Per Draw
+ Cannabidiol (CBD) 34mg(8%) 0.2mg Per Draw
+ Cannabinol (CBN)",
+        thc: 42,
+        cbd: 8,
+        subspecies: "Hybrid",
+        category: "Cartridges"
+      }
+    ])
+  else
+    retailer.products.create!([
+      {
+          name: "OG Kush",
           images: ["./img/OG_kush.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
@@ -78,9 +130,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Indica",
           category: "Flowers"
-      },
-      {
-        name: "Girl Scout Cookies",
+        },
+        {
+          name: "Girl Scout Cookies",
           images: ["./img/Girl_Scout.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "chighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
@@ -89,9 +141,9 @@ retailers.each do |retailer|
           cbd: 3,
           subspecies: "Hybrid",
           category: "Flowers"
-      },
-      {
-        name: "Sour Diesel",
+        },
+        {
+          name: "Sour Diesel",
           images: ["./img/Sour_Diesel.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "Echghth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
@@ -100,9 +152,9 @@ retailers.each do |retailer|
           cbd: 1,
           subspecies: "Sativa",
           category: "Flowers"
-      },
-      {
-        name: "Train Wreck",
+        },
+        {
+          name: "Train Wreck",
           images: ["./img/Sour_Diesel.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "Echghth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
@@ -111,9 +163,9 @@ retailers.each do |retailer|
           cbd: 8,
           subspecies: "Hybrid",
           category: "Flowers"
-      },
-      {
-        name: "Shake Mix",
+        },
+        {
+          name: "Shake Mix",
           images: ["./img/Shake_Mix.jpg"],
           prices: [80, 150, 280],
           price_labels: ["Eighth (3.5gch", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
@@ -122,9 +174,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Flowers"
-      },
-      {
-        name: "Milk Chocolate Bar",
+        },
+        {
+          name: "Milk Chocolate Bar",
           images: ["./img/Kraken84.jpeg"],
           prices: [18],
           price_labels: ["each"],
@@ -133,9 +185,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Edibles"
-      },
-      {
-        name: "Smores Brownie",
+        },
+        {
+          name: "Smores Brownie",
           images: ["./img/smoresbrownie.png"],
           prices: [18],
           price_labels: ["each"],
@@ -144,9 +196,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Edibles"
-      },
-      {
-        name: "Cannabis Pop",
+        },
+        {
+          name: "Cannabis Pop",
           images: ["./img/sprig.jpg"],
           prices: [18],
           price_labels: ["each"],
@@ -155,9 +207,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Edibles"
-      },
-      {
-        name: "Premium Shatter",
+        },
+        {
+          name: "Premium Shatter",
           images: ["./img/shatter_hover.png"],
           prices: [18],
           price_labels: ["each"],
@@ -166,9 +218,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Concentrates"
-      },
-      {
-          name: "Premium Wax",
+        },
+        {
+            name: "Premium Wax",
           images: ["./img/wax_hover.png"],
           prices: [18],
           price_labels: ["each"],
@@ -177,9 +229,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Concentrates"
-      },
-      {
-          name: "Bubba Kush",
+        },
+        {
+            name: "Bubba Kush",
           images: ["./img/prerolls.jpg"],
           prices: [18],
           price_labels: ["each"],
@@ -188,9 +240,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Indica",
           category: "Pre-rolls"
-      },
-      {
-          name: "Jack Herer",
+        },
+        {
+            name: "Jack Herer",
           images: ["./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
           prices: [18],
           price_labels: ["each"],
@@ -199,9 +251,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Sativa",
           category: "Pre-rolls"
-      },
-      {
-          name: "Bong",
+        },
+        {
+            name: "Bong",
           images: ["./img/smoke_cartel_sesh_supply_gaia_faberge_egg_water_pipe.png"],
           prices: [18],
           price_labels: ["each"],
@@ -210,9 +262,9 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Other"
-      },
-      {
-          name: "Bubbler Oil Rig",
+        },
+        {
+            name: "Bubbler Oil Rig",
           images: ["./img/smoke_cartel_sesh_supply_orion_cube_perc_recycler.png"],
           prices: [18],
           price_labels: ["each"],
@@ -221,6 +273,7 @@ retailers.each do |retailer|
           cbd: 5,
           subspecies: "Hybrid",
           category: "Other"
-      }
-  ])
+        }
+    ])
+  end
 end
