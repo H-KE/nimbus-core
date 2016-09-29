@@ -23,6 +23,9 @@ gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
+# How we get paid, damn son
+gem 'stripe'
+
 # Help with CSRF/CORS
 gem 'rack-cors', :require => 'rack/cors'
 
