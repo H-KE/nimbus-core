@@ -21,7 +21,7 @@ retailers = Retailer.create!([
     phone_number: "9999999999"
   },
   {
-    image_url: 'http://cdn.theweedblog.com/wp-content/uploads//Medical-Marijuana2.jpg',
+    image_url: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ7g9gbIGklD-DJX6WRwNeIjUAgy0QmjFV7TF9a9u4MGlIaQCBDNw',
     name: 'Modern Apothecarium',
     address: '474 Victoria Park Ave, M4A 2M5',
     description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
@@ -32,7 +32,7 @@ retailers = Retailer.create!([
     phone_number: "9999999999"
   },
   {
-  image_url:"http://www.cannabistherapyinstitute.com/images/cross.only.gif",
+  image_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbdSNJNo93KSBu2IJZSZSD_4EDCVpVHdh7a39exPGrQC_6pfpMVA",
   name: 'The Green Cross',
   address: '2012 Neilson Avenue, M1M 1V1',
   description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
@@ -43,7 +43,7 @@ retailers = Retailer.create!([
     phone_number: "9999999999"
   },
   {
-    image_url: 'http://sites.middlebury.edu/middmag/files/2012/10/high-line-logo.jpeg',
+    image_url: 'http://smoke-box.com/wp-content/themes/smoke_box/images/slide41.jpg',
     name: 'The High Line',
     address: '170 Islington Ave, M9V 2X5',
     description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
@@ -54,7 +54,7 @@ retailers = Retailer.create!([
     phone_number: "9999999999"
   },
   {
-    image_url: 'http://static1.squarespace.com/static/50414a88e4b0b97fe5a56a39/t/53695564e4b0e9a5f9b53913/1399412070542/',
+    image_url: 'https://pbs.twimg.com/media/CVaQybOXIAAPrwG.png',
     name: 'Shambhala Healing',
     address: '2792 Adelaide St, M5H 1P6',
     description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
