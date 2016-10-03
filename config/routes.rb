@@ -9,5 +9,11 @@ Rails.application.routes.draw do
       end
       resources :products, only: [:index]
     end
+    resources :users, only: [:show, :update] do
+      member do
+        put :add_credit_card
+        get :credit_card
+      end
+    end
   end
 end

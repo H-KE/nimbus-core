@@ -122,7 +122,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
     retailer.products.create!([
       {
           name: "OG Kush",
-          images: ["./img/OG_kush.jpg"],
+          images: ["./img/OG_kush.jpg", "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
           description: "OG Kush is cherished for its ability to crush stress under the weight of its heavy euphoria. It carries an earthy pine and sour lemon scent with woody undertones, an aroma that has become the signature of OG Kush varieties and descendants.",
@@ -133,7 +133,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         },
         {
           name: "Girl Scout Cookies",
-          images: ["./img/Girl_Scout.jpg"],
+          images: ["./img/Girl_Scout.jpg", "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "chighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
           description: "With a sweet and earthy aroma, Girl Scout Cookies launches you to euphoria’s top floor where full-body relaxation meets a time-bending cerebral space. A little goes a long way with this hybrid, whose THC heights have won Girl Scout Cookies numerous Cannabis Cup awards.",
@@ -144,7 +144,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         },
         {
           name: "Sour Diesel",
-          images: ["./img/Sour_Diesel.jpg"],
+          images: ["./img/Sour_Diesel.jpg", "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "Echghth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
           description: "Sour Diesel, sometimes called Sour D, is an invigorating sativa named after its pungent, diesel-like aroma. This fast-acting strain delivers energizing, dreamy cerebral effects that have pushed Sour Diesel to its legendary status. Stress, pain, and depression fade away in long-lasting relief that makes Sour Diesel a top choice among medical patients.",
@@ -155,7 +155,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         },
         {
           name: "Train Wreck",
-          images: ["./img/Sour_Diesel.jpg"],
+          images: ["./img/Sour_Diesel.jpg", "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
           prices: [15, 45, 80, 150, 280],
           price_labels: ["Gram (1g)", "Echghth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
           description: "Trainwreck is a mind-bending hybrid with potent sativa effects that hit like a freight train. Mexican and Thai sativas were bred with Afghani indicas to produce this Northern California staple, passing on a sweet lemon and spicy pine aroma. Trainwreck begins its speedy hurtle through the mind with a surge of euphoria, awakening creativity and happiness.",
