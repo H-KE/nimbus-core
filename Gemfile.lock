@@ -240,6 +240,3 @@ DEPENDENCIES
   stripe
   tzinfo-data
   web-console
-
-BUNDLED WITH
-   1.13.1
