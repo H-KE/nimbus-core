@@ -29,6 +29,9 @@ gem 'stripe'
 # Debugger
 gem 'pry'
 
+# Emails
+gem 'sendgrid'
+
 # Help with CSRF/CORS
 gem 'rack-cors', :require => 'rack/cors'
 
