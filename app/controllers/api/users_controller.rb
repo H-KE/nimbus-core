@@ -24,9 +24,7 @@ class Api::UsersController < ApplicationController
     @user = current_api_user
     if @user.stripe_customer_id.present?
       @cards = Stripe::Customer.retrieve(@user.stripe_customer_id).sources.all(:object => "card")
-      binding.pry
     else
-      binding.pry
       @cards = []
     end
   end
