@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :orders
+
+  def fullname
+    first_name + " " + last_name
+  end
 end
