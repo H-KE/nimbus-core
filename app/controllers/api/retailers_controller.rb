@@ -6,7 +6,7 @@ class Api::RetailersController < ApplicationController
   end
 
   def show
-    @retailer = Product.find params[:id]
+    @retailer = Retailer.find params[:id]
   end
 
   def channel

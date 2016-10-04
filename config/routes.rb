@@ -15,5 +15,6 @@ Rails.application.routes.draw do
         get :credit_card
       end
     end
+    resources :orders, only: [:index, :show, :create]
   end
 end
