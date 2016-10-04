@@ -2,11 +2,11 @@ class Api::RetailersController < ApplicationController
   before_action :authenticate_api_user!
 
   def index
-   @retailers = Retailer.all
+    @retailers = Retailer.all
   end
 
   def show
-   @retailer = Product.find params[:id]
+    @retailer = Product.find params[:id]
   end
 
   def channel
