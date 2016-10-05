@@ -9,22 +9,20 @@ class Api::OrdersController < ApplicationController
     if @user.stripe_customer_id.present?
       @order = @user.orders.create!(order_params)
       charge = Stripe::Charge::create(
-        :amount => params[:total_price]
+        :amount => params[:total_price] * 100,
         :currency => "cad",
         :customer => @user.stripe_customer_id,
-        :description => "Charge user " + @user.id + ", " + @user.fullname + ", for order " + @order.id
-      )
-    else
-      @order.status = "NO CREDITCARD"
-      render :json => { :errors => "NO_CREDIT_CARD"}, :status => 422
-    end
+        :description => "Charge user " + @user.id.to_s + ", " + @user.fullname + ", for order " + @order.id.to_s)
 
-    order_details_params[:order_details].each do |item|
-      @order.order_details.create({
-        product_id: item[:id],
-        price: item[:price],
-        quantity: item[:quantity]
-      })
+      order_details_params[:order_details].each do |item|
+        @order.order_details.create({
+          product_id: item[:id],
+          price: item[:price],
+          quantity: item[:quantity]
+        })
+      end
+    else
+      render :json => { :errors => "NO_CREDIT_CARD"}, :status => 422
     end
 
   rescue Stripe::CardError => e
