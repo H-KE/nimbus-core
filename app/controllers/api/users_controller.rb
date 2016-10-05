@@ -7,16 +7,20 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = current_api_user
-    token = params[:token]
+    @user.update(user_params)
 
-    if @user.stripe_customer_id.present?
-      customer = Stripe::Customer.retrieve(@user.stripe_customer_id)
-      @card = customer.sources.create(:source => token)
-    else
-      customer = Stripe::Customer.create(
-        :description => "Customer for" + @user.email,
-        :source => token)
-      @user.update(stripe_customer_id: customer.id)
+    if params[:token].present?
+      token = params[:token]
+
+      if @user.stripe_customer_id.present?
+        customer = Stripe::Customer.retrieve(@user.stripe_customer_id)
+        @card = customer.sources.create(:source => token)
+      else
+        customer = Stripe::Customer.create(
+          :description => "Customer for" + @user.email,
+          :source => token)
+        @user.update(stripe_customer_id: customer.id)
+      end
     end
   end
 
@@ -27,5 +31,13 @@ class Api::UsersController < ApplicationController
     else
       @cards = []
     end
+  end
+
+  def user_params
+    params.permit(:address, :first_name, :last_name, :email)
+  end
+
+  def card_params
+    params.permit(:card_token)
   end
 end
