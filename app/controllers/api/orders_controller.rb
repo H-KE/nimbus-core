@@ -1,7 +1,10 @@
 class Api::OrdersController < ApplicationController
   before_action :authenticate_api_user!
 
-
+  def index
+    @user = current_api_user
+    @orders = @user.orders.all
+  end
 
   def create
     @user = current_api_user
