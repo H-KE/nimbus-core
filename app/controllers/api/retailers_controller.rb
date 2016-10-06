@@ -1,5 +1,5 @@
 class Api::RetailersController < ApplicationController
-  # before_action :authenticate_api_user!
+  before_action :authenticate_api_user!
 
   def index
     @retailers = Retailer.all
