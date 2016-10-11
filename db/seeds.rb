@@ -129,7 +129,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 25,
         cbd: 0.41,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Tuna Kush",
@@ -140,7 +140,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Purple Kush",
@@ -151,7 +151,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 14,
         cbd: 0.22,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Purple Candy",
@@ -162,7 +162,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Green Crack",
@@ -173,7 +173,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Harlequin",
@@ -184,7 +184,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 11,
         cbd: 7,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "Jack Herer",
@@ -195,7 +195,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Mendocino Purps",
@@ -206,7 +206,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "MK Ultra",
@@ -217,7 +217,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "Moby Dick",
@@ -228,7 +228,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 25,
         cbd: 0.41,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "Nebula",
@@ -239,7 +239,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Nuken",
@@ -250,7 +250,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 18.5,
         cbd: 0,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "OG Kush",
@@ -261,7 +261,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Sour Diesel",
@@ -272,7 +272,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 19.5,
         cbd: 5,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Sour Tangie",
@@ -283,7 +283,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Sourlope",
@@ -294,7 +294,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Strawberry Cough",
@@ -305,7 +305,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Super Silver Haze",
@@ -316,7 +316,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 19,
         cbd: 2.43,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Okanagan Valley Harvest Mango(70mg THC)",
@@ -431,7 +431,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 60,
         subspecies: "",
-        category: "Flowers"
+        category: "Cannabis Oil (Tears)"
       }
     ])
   else

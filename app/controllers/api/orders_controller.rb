@@ -15,7 +15,7 @@ class Api::OrdersController < ApplicationController
         :amount => params[:total_price] * 100,
         :currency => "cad",
         :customer => @user.stripe_customer_id,
-        :description => "Charge user " + @user.id.to_s + ", " + @user.fullname + ", for order " + @order.id.to_s)
+        :description => "Charge user #{}" + @user.id.to_s + " (" + @user.fullname + ") for order #" + @order.id.to_s)
 
       order_details_params[:order_details].each do |item|
         @order.order_details.create({
