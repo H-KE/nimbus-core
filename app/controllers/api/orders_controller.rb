@@ -31,6 +31,7 @@ class Api::OrdersController < ApplicationController
 
     RetailerMailer.send_order_confirmation(@user, @order).deliver
     RetailerMailer.send_order_confirmation_demo(@user, @order).deliver
+    UserMailer.send_order_confirmation(@user, @order).deliver
 
   rescue Stripe::CardError => e
     @order.status = "DECLINED"
