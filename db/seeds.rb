@@ -10,7 +10,7 @@ users = user = User.create! :email => 'admin@nimbusfly.co', :password => 'topsec
 
 retailers = Retailer.create!([
   {
-    image_url: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ7g9gbIGklD-DJX6WRwNeIjUAgy0QmjFV7TF9a9u4MGlIaQCBDNw',
+    image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbdSNJNo93KSBu2IJZSZSD_4EDCVpVHdh7a39exPGrQC_6pfpMVA',
     name: 'Modern Apothecarium - Demo',
     address: '474 Victoria Park Ave, M4A 2M5',
     description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
@@ -21,7 +21,7 @@ retailers = Retailer.create!([
     phone_number: "9999999999"
   },
   {
-    image_url: 'http://smoke-box.com/wp-content/themes/smoke_box/images/slide41.jpg',
+    image_url: 'https://pbs.twimg.com/media/CVaQybOXIAAPrwG.png',
     name: 'The High Line - Demo',
     address: '2012 Neilson Avenue, M1M 1V1',
     description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',

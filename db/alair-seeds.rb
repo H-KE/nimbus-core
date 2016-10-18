@@ -17,7 +17,7 @@ retailers = Retailer.create!([
     mail: true,
     delivery: true,
     pickup: true,
-    email: "demo@nimbusfly.co",
+    email: "bailey@quintetfund.com",
     phone_number: "9999999999"
   },
   {
@@ -31,39 +31,39 @@ retailers = Retailer.create!([
     email: "bailey@quintetfund.com",
     phone_number: "6474624663"
   },
-  {
-    image_url: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ7g9gbIGklD-DJX6WRwNeIjUAgy0QmjFV7TF9a9u4MGlIaQCBDNw',
-    name: 'Modern Apothecarium',
-    address: '474 Victoria Park Ave, M4A 2M5',
-    description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
-    mail: true,
-    delivery: false,
-    pickup: true,
-    email: "demo@nimbusfly.co",
-    phone_number: "9999999999"
-  },
-  {
-    image_url: 'http://smoke-box.com/wp-content/themes/smoke_box/images/slide41.jpg',
-    name: 'The High Line',
-    address: '2012 Neilson Avenue, M1M 1V1',
-    description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
-    mail: true,
-    delivery: true,
-    pickup: true,
-    email: "demo@nimbusfly.co",
-    phone_number: "9999999999"
-  },
-  {
-    image_url: 'https://pbs.twimg.com/media/CVaQybOXIAAPrwG.png',
-    name: 'Shambhala Healing',
-    address: '2792 Adelaide St, M5H 1P6',
-    description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
-    mail: true,
-    delivery: false,
-    pickup: false,
-    email: "demo@nimbusfly.co",
-    phone_number: "9999999999"
-  }
+  # {
+  #   image_url: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ7g9gbIGklD-DJX6WRwNeIjUAgy0QmjFV7TF9a9u4MGlIaQCBDNw',
+  #   name: 'Modern Apothecarium',
+  #   address: '474 Victoria Park Ave, M4A 2M5',
+  #   description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
+  #   mail: true,
+  #   delivery: false,
+  #   pickup: true,
+  #   email: "demo@nimbusfly.co",
+  #   phone_number: "9999999999"
+  # },
+  # {
+  #   image_url: 'http://smoke-box.com/wp-content/themes/smoke_box/images/slide41.jpg',
+  #   name: 'The High Line',
+  #   address: '2012 Neilson Avenue, M1M 1V1',
+  #   description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
+  #   mail: true,
+  #   delivery: true,
+  #   pickup: true,
+  #   email: "demo@nimbusfly.co",
+  #   phone_number: "9999999999"
+  # },
+  # {
+  #   image_url: 'https://pbs.twimg.com/media/CVaQybOXIAAPrwG.png',
+  #   name: 'Shambhala Healing',
+  #   address: '2792 Adelaide St, M5H 1P6',
+  #   description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.',
+  #   mail: true,
+  #   delivery: false,
+  #   pickup: false,
+  #   email: "demo@nimbusfly.co",
+  #   phone_number: "9999999999"
+  # }
 ])
 
 retailers.each do |retailer|
