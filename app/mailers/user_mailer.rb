@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default :from => 'hello@nimbusfly.co'
+  default :from => 'info.nimbusfly@gmail.com'
 
   # send a signup email to the user, pass in the user object that contains the user's email address
   def send_signup_email(user)
@@ -23,6 +23,5 @@ class UserMailer < ApplicationMailer
 
     mail( :to => @user[:email],
           :subject => '[NIMBUS] ' + @user[:first_name] + ', thank you for placing your order with ' + @retailer[:name])
-          #     RetailerMailer.send_signup_email(@user, @order).deliver
   end
 end

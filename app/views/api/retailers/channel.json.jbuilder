@@ -4,4 +4,5 @@ json.array! @retailers do |retailer|
   json.address retailer.address
   json.description retailer.description
   json.avatar_url retailer.image_url
+  json.shipping_fee retailer.shipping_fee
 end

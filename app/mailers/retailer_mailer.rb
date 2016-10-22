@@ -1,5 +1,6 @@
 class RetailerMailer < ApplicationMailer
-  default :from => 'hello@nimbusfly.co'
+  default :from => 'info.nimbusfly@gmail.com'
+  @adminUrl = "www.google.com"
 
   def send_order_confirmation(user, order)
     @user = user

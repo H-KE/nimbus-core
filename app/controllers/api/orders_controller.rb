@@ -12,7 +12,7 @@ class Api::OrdersController < ApplicationController
     if @user.stripe_customer_id.present?
       @order = @user.orders.create!(order_params)
       charge = Stripe::Charge::create(
-        :amount => params[:total_price] * 100,
+        :amount => (params[:total_price] + params[:total_price]) * 100,
         :currency => "cad",
         :customer => @user.stripe_customer_id,
         :description => "Charge user #{}" + @user.id.to_s + " (" + @user.fullname + ") for order #" + @order.id.to_s)
@@ -39,7 +39,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def order_params
-    params.permit(:total_price, :address, :retailer_id, :status, :distribution_channel)
+    params.permit(:total_price, :address, :retailer_id, :status, :distribution_channel, :delivery_fee)
   end
 
   def order_details_params
