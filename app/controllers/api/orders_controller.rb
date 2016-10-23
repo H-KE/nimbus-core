@@ -3,7 +3,7 @@ class Api::OrdersController < ApplicationController
 
   def index
     @user = current_api_user
-    @orders = @user.orders.all
+    @orders = @user.orders.order("created_at DESC")
   end
 
   def show

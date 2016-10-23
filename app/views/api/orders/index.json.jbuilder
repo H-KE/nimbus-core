@@ -5,6 +5,7 @@ json.array! @orders do |order|
   json.address order.address
   json.total_price order.total_price
   json.status order.status
+  json.delivery_fee order.delivery_fee
 
   json.order_details order.order_details.all do |item|
     json.name item.name
