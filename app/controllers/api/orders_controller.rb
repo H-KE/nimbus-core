@@ -6,6 +6,10 @@ class Api::OrdersController < ApplicationController
     @orders = @user.orders.all
   end
 
+  def show
+    @order = Order.find(order_params[:id])
+  end
+
   def create
     @user = current_api_user
 
@@ -41,7 +45,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def order_params
-    params.permit(:total_price, :address, :retailer_id, :status, :distribution_channel, :delivery_fee)
+    params.permit(:id, :total_price, :address, :retailer_id, :status, :distribution_channel, :delivery_fee)
   end
 
   def order_details_params
