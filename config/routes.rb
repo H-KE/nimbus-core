@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
     end
     resources :orders, only: [:index, :show, :create]
+    resources :verification_documents, only: [:index, :create]
   end
   namespace :admin do
     resources :orders, only: [:edit]

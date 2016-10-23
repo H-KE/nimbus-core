@@ -1,10 +1,6 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_api_user!
 
-  def show
-    @user = current_api_user
-  end
-
   def update
     @user = current_api_user
     @user.update(user_params)
@@ -26,6 +22,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = current_api_user
+    @documents = @user.verification_documents.all
     if @user.stripe_customer_id.present?
       @cards = Stripe::Customer.retrieve(@user.stripe_customer_id).sources.all(:object => "card")
     else
