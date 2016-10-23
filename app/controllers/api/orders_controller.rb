@@ -29,8 +29,10 @@ class Api::OrdersController < ApplicationController
       render :json => { :errors => "NO_CREDIT_CARD"}, :status => 422
     end
 
-    RetailerMailer.send_order_confirmation(@user, @order).deliver
-    RetailerMailer.send_order_confirmation_demo(@user, @order).deliver
+    @retailer = @order.retailer
+    @updateUrl = request.base_url +  "/admin/orders/#{@order[:id]}/edit"
+    RetailerMailer.send_order_confirmation(@user, @order, @retailer[:email], @updateUrl).deliver
+    RetailerMailer.send_order_confirmation(@user, @order, "info.nimbusfly@gmail.com", @updateUrl).deliver
     UserMailer.send_order_confirmation(@user, @order).deliver
 
   rescue Stripe::CardError => e

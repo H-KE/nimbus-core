@@ -17,4 +17,7 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:index, :show, :create]
   end
+  namespace :admin do
+    resources :orders, only: [:edit]
+  end
 end

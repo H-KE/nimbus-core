@@ -19,6 +19,7 @@ a[class="bulletproof-button"] {
 	 padding-right: 0 !important;
 	 margin-left: 0 !important;
 	 margin-right: 0 !important;
+	 -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; font-size: 16px;
 }
 @media only screen and (max-width: 640px) {
   body {
@@ -162,17 +163,11 @@ a[class="bulletproof-button"] {
 							<table cellpadding="0" cellspacing="0" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" width="100%">
 								<tbody>
 									<tr>
-										<td align="center" style="-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; font-size: 16px;" bgcolor="#1188e6">
-											<a href="www.google.com" class="bulletproof-button" target="_blank" style="height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">ACCEPT ORDER</a>
+										<td align="center">
+											<a href="<%= @updateUrl + "?status=packaging"%>" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">ACCEPT ORDER</a>
 										</td>
-											<p></p>
-										<td>
-										</td>
-										<td>
-											<p></p>
-										</td>
-										<td align="center" style="-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; font-size: 16px;" bgcolor="red">
-											<a href="www.google.com" class="bulletproof-button" target="_blank" style="height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;">DECLINE ORDER</a>
+										<td align="center">
+											<a href="<%= @updateUrl + "?status=declined"%>" class="bulletproof-button" target="_blank" style="background-color:red; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;">DECLINE ORDER</a>
 										</td>
 									</tr>
 								</tbody>
@@ -191,7 +186,7 @@ a[class="bulletproof-button"] {
 						<td align="center" class="content-block aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" valign="top">Nimbus Inc.</td>
 					</tr>
 					<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-						<td align="center" class="aligncenter content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; color: #999; text-align: center; margin: 0; padding: 0 0 20px;" valign="top">Questions? Email <a href="mailto:" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #999; text-decoration: underline; margin: 0;">info.nimbusfly@gmail.com</a></td>
+						<td align="center" class="aligncenter content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; color: #999; text-align: center; margin: 0; padding: 0 0 20px;" valign="top">Questions? Email <a href="mailto:" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #999; text-decoration: underline; margin: 0;">hello@nimbusfly.co</a></td>
 					</tr>
 				</tbody>
 			</table>
