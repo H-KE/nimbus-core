@@ -65,14 +65,14 @@ ActiveRecord::Schema.define(version: 20161022200922) do
     t.text     "description"
     t.text     "address"
     t.string   "image_url"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.boolean  "mail"
     t.boolean  "delivery"
     t.boolean  "pickup"
     t.string   "email"
     t.string   "phone_number"
-    t.decimal  "shipping_fee"
+    t.decimal  "shipping_fee", default: "0.0", null: false
   end
 
   create_table "users", force: :cascade do |t|
