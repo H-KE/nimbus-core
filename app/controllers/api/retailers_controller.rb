@@ -10,6 +10,6 @@ class Api::RetailersController < ApplicationController
   end
 
   def channel
-    @retailers = Retailer.where(params[:distribution])
+    @retailers = Retailer.where(params[:distribution]).order("created_at DESC")
   end
 end

@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161023155443) do
     t.decimal  "cbd"
     t.string   "subspecies"
     t.string   "category"
+    t.string   "thumbnail"
     t.index ["retailer_id"], name: "index_products_on_retailer_id", using: :btree
   end
 
