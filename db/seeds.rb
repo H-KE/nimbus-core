@@ -17,6 +17,7 @@ retailers = Retailer.create!([
     mail: true,
     delivery: true,
     pickup: true,
+    shipping_fee: 10,
     email: "peter@nimbusfly.co",
     phone_number: "6474624663"
   },
@@ -28,6 +29,7 @@ retailers = Retailer.create!([
     mail: true,
     delivery: false,
     pickup: false,
+    shipping_fee: 10;
     email: "peter@nimbusfly.co",
     phone_number: "6474624663"
   },
@@ -39,6 +41,7 @@ retailers = Retailer.create!([
     mail: true,
     delivery: false,
     pickup: false,
+    shipping_fee: 15;
     email: "peter@nimbusfly.co",
     phone_number: "6477485323"
   },
@@ -50,6 +53,7 @@ retailers = Retailer.create!([
     mail: true,
     delivery: true,
     pickup: true,
+    shipping_fee: 18;
     email: "peter@nimbusfly.co",
     phone_number: "9999999999"
   },
@@ -61,6 +65,7 @@ retailers = Retailer.create!([
     mail: true,
     delivery: true,
     pickup: true,
+    shipping_fee: 21;
     email: "peter@nimbusfly.co",
     phone_number: "647-853-8697"
   },

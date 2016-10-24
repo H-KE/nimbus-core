@@ -145,7 +145,9 @@ a[class="bulletproof-button"] {
 									</tr>
 									<tr>
 										<td align="center" style="-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; font-size: 16px;">
-											<a href="www.google.com" target="_blank" style="height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; padding: 12px 18px 12px 18px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;">Click to view documents</a>
+											<% @documents.each do |document| %>
+												<a href="<%= document.verification_url %>" target="_blank" style="height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; padding: 12px 18px 12px 18px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;"><%= document.verification_type %></a>
+											<% end %>
 										</td>
 									</tr>
 								</tbody>

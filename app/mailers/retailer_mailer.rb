@@ -13,7 +13,7 @@ class RetailerMailer < ApplicationMailer
                         addressHash["city"] + ', ' +
                         addressHash["province"] + ', ' +
                         addressHash["postalCode"]
-
+    @documents = @user.verification_documents
     @updateUrl = updateUrl
     mail( :to => sendTo,
           :subject => '[NIMBUS] ' + @user[:first_name] + ' has placed a ' + @order[:distribution_channel] + ' order' )
