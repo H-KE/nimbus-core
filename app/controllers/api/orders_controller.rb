@@ -13,8 +13,6 @@ class Api::OrdersController < ApplicationController
   def create
     @user = current_api_user
 
-    binding.pry
-
     if @user.stripe_customer_id.present?
       @order = @user.orders.create!(order_params)
       charge = Stripe::Charge::create(
