@@ -12,25 +12,15 @@ class Api::OrdersController < ApplicationController
 
   def create
     @user = current_api_user
+    @order = @user.orders.create!(order_params)
 
-    if @user.stripe_customer_id.present?
-      @order = @user.orders.create!(order_params)
-      charge = Stripe::Charge::create(
-        :amount => ((params[:total_price] + params[:delivery_fee] + params[:tax_amount]) * 100).round,
-        :currency => "cad",
-        :customer => @user.stripe_customer_id,
-        :description => "Charge user #{}" + @user.id.to_s + " (" + @user.fullname + ") for order #" + @order.id.to_s)
-
-      order_details_params[:order_details].each do |item|
-        @order.order_details.create({
-          product_id: item[:id],
-          price: item[:price],
-          quantity: item[:quantity],
-          name: item[:name]
-        })
-      end
-    else
-      render :json => { :errors => "NO_CREDIT_CARD"}, :status => 422
+    order_details_params[:order_details].each do |item|
+      @order.order_details.create({
+        product_id: item[:id],
+        price: item[:price],
+        quantity: item[:quantity],
+        name: item[:name]
+      })
     end
 
     @retailer = @order.retailer
