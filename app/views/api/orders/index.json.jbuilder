@@ -1,6 +1,7 @@
 json.array! @orders do |order|
   json.id order.id
   json.dispensary_name order.retailer.name
+  json.dispensary_email order.retailer.email
   json.dispensary_image order.retailer.image_url
   json.address order.address
   json.total_price order.total_price
