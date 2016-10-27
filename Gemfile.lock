@@ -222,6 +222,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   devise_token_auth
+  faraday
   jbuilder (~> 2.6)
   listen (~> 3.0.5)
   omniauth-facebook
@@ -240,6 +241,3 @@ DEPENDENCIES
   stripe
   tzinfo-data
   web-console
-
-BUNDLED WITH
-   1.13.1

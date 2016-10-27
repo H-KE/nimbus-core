@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026234926) do
+ActiveRecord::Schema.define(version: 20161026215817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,13 @@ ActiveRecord::Schema.define(version: 20161026234926) do
     t.string   "address"
     t.decimal  "delivery_fee",         default: "0.0",             null: false
     t.string   "tracking_number"
+<<<<<<< HEAD
     t.decimal  "tax_amount",           default: "0.0",             null: false
+=======
+    t.decimal  "tax_amount",           default: "0.0",       null: false
+    t.string   "help_desk_ticket_id"
+    t.index ["help_desk_ticket_id"], name: "index_orders_on_help_desk_ticket_id", where: "((help_desk_ticket_id)::text <> NULL::text)", using: :btree
+>>>>>>> a152eb156facf8a85022c3d0a2fe8511744c9606
     t.index ["retailer_id"], name: "index_orders_on_retailer_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -67,14 +73,17 @@ ActiveRecord::Schema.define(version: 20161026234926) do
     t.text     "description"
     t.text     "address"
     t.string   "image_url"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.boolean  "mail"
     t.boolean  "delivery"
     t.boolean  "pickup"
     t.string   "email"
     t.string   "phone_number"
-    t.decimal  "shipping_fee", default: "0.0", null: false
+    t.decimal  "shipping_fee",      default: "0.0",  null: false
+    t.string   "help_desk_type",    default: "NONE"
+    t.string   "help_desk_api_url"
+    t.string   "help_desk_auth"
   end
 
   create_table "users", force: :cascade do |t|

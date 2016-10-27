@@ -19,7 +19,10 @@ retailers = Retailer.create!([
     pickup: true,
     shipping_fee: 10,
     email: "peter@nimbusfly.co",
-    phone_number: "6474624663"
+    phone_number: "6474624663",
+    help_desk_type: "FRESHDESK",
+    help_desk_api_url: "https://nimbusfly.freshdesk.com",
+    help_desk_auth: "GIZ3LNdanPbTZKsAlTcm"
   },
   {
     image_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbdSNJNo93KSBu2IJZSZSD_4EDCVpVHdh7a39exPGrQC_6pfpMVA",

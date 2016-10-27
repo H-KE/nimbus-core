@@ -22,6 +22,10 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def index
+    Retailer.find(1).create_order_ticket
+  end
+
   def order_params
     params.permit(:id, :status, :tracking_number)
   end
