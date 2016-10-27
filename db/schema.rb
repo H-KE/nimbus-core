@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026234926) do
+ActiveRecord::Schema.define(version: 20161027030801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,17 +30,17 @@ ActiveRecord::Schema.define(version: 20161026234926) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "total_price"
-    t.string   "status",               default: "payment_pending", null: false
+    t.string   "status",               default: "verifying", null: false
     t.string   "ship_date"
     t.string   "distribution_channel"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "user_id"
     t.integer  "retailer_id"
     t.string   "address"
-    t.decimal  "delivery_fee",         default: "0.0",             null: false
+    t.decimal  "delivery_fee",         default: "0.0",       null: false
     t.string   "tracking_number"
-    t.decimal  "tax_amount",           default: "0.0",             null: false
+    t.decimal  "tax_amount",           default: "0.0",       null: false
     t.string   "help_desk_ticket_id"
     t.index ["help_desk_ticket_id"], name: "index_orders_on_help_desk_ticket_id", where: "((help_desk_ticket_id)::text <> NULL::text)", using: :btree
     t.index ["retailer_id"], name: "index_orders_on_retailer_id", using: :btree
