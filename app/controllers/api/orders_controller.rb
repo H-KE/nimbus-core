@@ -25,6 +25,16 @@ class Api::OrdersController < ApplicationController
 
     @retailer = @order.retailer
     @updateUrl = request.base_url +  "/admin/orders/#{@order[:id]}/edit"
+    ticket_html = render_to_string(:partial => 'desk_ticket_confirm.html',
+                                   :locals => { user: @user,
+                                                order: @order,
+                                                orderDetails: @order.order_details,
+                                                documents: @user.verification_documents,
+                                                updateUrl: @updateUrl,
+                                                shippingAddress: @order.shipping_address })
+    puts ticket_html
+    @retailer.create_order_ticket ticket_html.to_json
+
     RetailerMailer.send_order_confirmation(@user, @order, @retailer[:email], @updateUrl).deliver
     RetailerMailer.send_order_confirmation(@user, @order, "info.nimbusfly@gmail.com", @updateUrl).deliver
     UserMailer.send_order_confirmation(@user, @order).deliver
