@@ -34,7 +34,10 @@ retailers = Retailer.create!([
     pickup: false,
     shipping_fee: 10,
     email: "peter@nimbusfly.co",
-    phone_number: "6474624663"
+    phone_number: "6474624663",
+    help_desk_type: "FRESHDESK",
+    help_desk_api_url: "https://nimbusfly.freshdesk.com",
+    help_desk_auth: "GIZ3LNdanPbTZKsAlTcm"
   },
   {
     image_url:"https://d3ix816x6wuc0d.cloudfront.net/i/357531/w768",
@@ -137,7 +140,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 25,
         cbd: 0.41,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Tuna Kush",
@@ -148,7 +151,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Purple Kush",
@@ -159,7 +162,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 14,
         cbd: 0.22,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Purple Candy",
@@ -170,7 +173,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Green Crack",
@@ -181,7 +184,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Harlequin",
@@ -192,7 +195,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 11,
         cbd: 7,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "Jack Herer",
@@ -203,7 +206,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Mendocino Purps",
@@ -214,7 +217,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "MK Ultra",
@@ -225,7 +228,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "Moby Dick",
@@ -236,7 +239,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 25,
         cbd: 0.41,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Hybrid"
       },
       {
         name: "Nebula",
@@ -247,7 +250,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Nuken",
@@ -258,7 +261,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 18.5,
         cbd: 0,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "OG Kush",
@@ -269,7 +272,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Indica"
       },
       {
         name: "Sour Diesel",
@@ -280,7 +283,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 19.5,
         cbd: 5,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Sour Tangie",
@@ -291,7 +294,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Sourlope",
@@ -302,7 +305,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Strawberry Cough",
@@ -313,7 +316,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Super Silver Haze",
@@ -324,7 +327,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 19,
         cbd: 2.43,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Sativa"
       },
       {
         name: "Okanagan Valley Harvest Mango(70mg THC)",
@@ -1215,7 +1218,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         name: "Girl Scout Cookies",
         images: ["./assets/img/Girl_Scout.jpg", "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
         prices: [15, 45, 80, 150, 280],
-        price_labels: ["Gram (1g)", "chighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "With a sweet and earthy aroma, Girl Scout Cookies launches you to euphoria’s top floor where full-body relaxation meets a time-bending cerebral space. A little goes a long way with this hybrid, whose THC heights have won Girl Scout Cookies numerous Cannabis Cup awards.",
         thc: 26.5,
         cbd: 3,
@@ -1226,7 +1229,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         name: "Sour Diesel",
         images: ["./assets/img/Sour_Diesel.jpg", "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
         prices: [15, 45, 80, 150, 280],
-        price_labels: ["Gram (1g)", "Echghth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "Sour Diesel, sometimes called Sour D, is an invigorating sativa named after its pungent, diesel-like aroma. This fast-acting strain delivers energizing, dreamy cerebral effects that have pushed Sour Diesel to its legendary status. Stress, pain, and depression fade away in long-lasting relief that makes Sour Diesel a top choice among medical patients.",
         thc: 20.5,
         cbd: 1,
@@ -1237,7 +1240,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         name: "Train Wreck",
         images: ["./assets/img/Sour_Diesel.jpg", "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg"],
         prices: [15, 45, 80, 150, 280],
-        price_labels: ["Gram (1g)", "Echghth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "Trainwreck is a mind-bending hybrid with potent sativa effects that hit like a freight train. Mexican and Thai sativas were bred with Afghani indicas to produce this Northern California staple, passing on a sweet lemon and spicy pine aroma. Trainwreck begins its speedy hurtle through the mind with a surge of euphoria, awakening creativity and happiness.",
         thc: 18.5,
         cbd: 8,
@@ -1248,7 +1251,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         name: "Shake Mix",
         images: ["./assets/img/Shake_Mix.jpg"],
         prices: [80, 150, 280],
-        price_labels: ["Eighth (3.5gch", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        price_labels: ["Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         cbd: 5,

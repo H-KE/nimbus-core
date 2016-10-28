@@ -5,5 +5,6 @@ class AddHelpDeskIntegration < ActiveRecord::Migration[5.0]
     add_column :retailers, :help_desk_auth, :string
     add_column :orders, :help_desk_ticket_id, :string
     add_index :orders, :help_desk_ticket_id, where: "(help_desk_ticket_id != null)"
+    execute("ALTER sequence orders_id_seq START with 7462864 RESTART;")
   end
 end
