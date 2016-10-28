@@ -3,6 +3,7 @@ class Retailer < ApplicationRecord
   has_many :orders
 
   def create_order_ticket(html)
+    due_date = DateTime.now + 1
     conn = Faraday.new(:url => help_desk_api_url) do |faraday|
       faraday.request  :url_encoded             # form-encode POST params
       faraday.response :logger                  # log requests to STDOUT
@@ -16,12 +17,17 @@ class Retailer < ApplicationRecord
       req.body = '{
         "description":' + html + ',
         "subject":"A new order has been placed",
-        "email":"hello@nimbusfly.co",
-        "priority":1,
+        "email":"han@nimbusfly.co",
+        "priority":2,
         "status":2,
-        "cc_emails":["info.nimbusfly@gmail.com","peter@nimbusfly.co"]
+        "due_by":' + due_date.to_json + ',
+        "fr_due_by":' + due_date.to_json + ',
+        "cc_emails":["info.nimbusfly@gmail.com"]
       }'
     end
-    puts response.body
+  end
+
+  def uses_help_desk?
+    help_desk_type != "NONE"
   end
 end
