@@ -9,12 +9,7 @@ Rails.application.routes.draw do
       end
       resources :products, only: [:index]
     end
-    resources :users, only: [:show, :update] do
-      member do
-        put :update_user
-        get :credit_card
-      end
-    end
+    resources :users, only: [:show, :update]
     resources :orders, only: [:index, :show, :create]
     resources :verification_documents, only: [:index, :create]
   end

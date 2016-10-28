@@ -180,11 +180,7 @@ a[class="bulletproof-button"] {
 									</tr>
 									<tr>
 										<td align="center">
-											<p>You will receive an e-transfer from <b><%= @user[:first_name]%> <%= @user[:last_name]%></b> shortly. We advice you to verify the received amount with the order total before accepting the order.</p>
-											<p>Please use the following information to identify and receive the payment.</p>
-											<p>From email: <b><%= @user[:email]%></b></p>
-											<p>Transfer Description: <b><%= @order[:id]%></b></p>
-											<p>Security Question: <b>something cool</b></p>
+											<a href="www.google.com">e-Transfer Deposit Link</a>
 											<p>Security Answer: <b><%= @retailer[:name].downcase.delete(' ')%></b></p>
 										</td>
 									</tr>
