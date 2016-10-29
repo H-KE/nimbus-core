@@ -17,4 +17,13 @@ class UserMailer < ApplicationMailer
     mail( :to => @user[:email],
           :subject => '[NIMBUS] ' + @user[:first_name] + ', thank you for placing your order with ' + @retailer[:name])
   end
+
+  def order_status_email(order)
+    @order = order
+    @user = order.user
+    @retailer = order.retailer
+
+    mail( :to => @user[:email],
+          :subject => '[NIMBUS] ' + @user[:first_name] + ', your order from ' + @retailer[:name] + ' was updated to ' + @order[:status] + '!')
+  end
 end

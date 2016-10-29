@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :retailer
 
-  def send_to_retailer()
+  def send_order_to_retailer
     if retailer.uses_help_desk?
       ticket_html = render_to_string(:partial => 'desk_ticket_confirm.html',
                                       :locals => { user: user,
@@ -17,16 +17,24 @@ class Order < ApplicationRecord
       if response.success?
         help_desk_ticket_id = response.body["id"]
       else
-        update(status: "unsent")
+        raise "error sending freshdesk ticket"
       end
     else
-      RetailerMailer.order_confirmation_email(self, "info.nimbusfly@gmail.com").deliver
-      RetailerMailer.order_confirmation_email(self, retailer[:email]).deliver
+      begin
+        RetailerMailer.order_confirmation_email(self, "orders@nimbusfly.com").deliver
+        RetailerMailer.order_confirmation_email(self, retailer[:email]).deliver
+      rescue => e
+        raise e
+      end
     end
   end
 
-  def send_to_user()
+  def send_order_to_user
     UserMailer.order_confirmation_email(self).deliver
+  end
+
+  def send_user_status_update
+    UserMailer.order_status_email(self).deliver
   end
 
   def shipping_address

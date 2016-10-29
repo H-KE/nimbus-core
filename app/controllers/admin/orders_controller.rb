@@ -1,4 +1,21 @@
 class Admin::OrdersController < ApplicationController
+  def create
+    begin
+      @order = Order.find params[:id]
+      @order.update(etransfer_link: order_params[:etransfer_link])
+      @order.send_order_to_retailer()
+      @order.send_order_to_user()
+      @order.update(status: 'verifying')
+    rescue => e
+      @order.update(status: 'unsent')
+      # TODO: hook up slack/email notifier here to let us know an error has occured
+      render :text => 'error' and return
+    end
+
+    @order.send_user_status_update()
+    render :text => 'success!'
+  end
+
   def edit
     @order = Order.find(order_params[:id])
     # if @order[:status] != "verifying"
@@ -20,12 +37,14 @@ class Admin::OrdersController < ApplicationController
     # if !@order.update(order_params)
     #   render :text => "Some error occured, please try again!", :status => '404' and return
     # end
-    if !@order.update(order_params)
+    if @order.update(order_params)
+      @order.send_user_status_update()
+    else
       render :text => "Some error occured, please try again!", :status => '404' and return
     end
   end
 
   def order_params
-    params.permit(:id, :status, :tracking_number)
+    params.permit(:id, :status, :tracking_number, :etransfer_link)
   end
 end

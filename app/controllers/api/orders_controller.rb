@@ -22,6 +22,7 @@ class Api::OrdersController < ApplicationController
         name: item[:name]
       })
     end
+    # TODO: Need error handling here
   end
 
   def order_params
