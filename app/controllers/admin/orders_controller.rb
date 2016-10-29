@@ -22,8 +22,6 @@ class Admin::OrdersController < ApplicationController
     # end
     if !@order.update(order_params)
       render :text => "Some error occured, please try again!", :status => '404' and return
-    else
-      @message = "Order ##{@order[:id]} has been set to [" + order_params[:status] + "]!"
     end
   end
 
