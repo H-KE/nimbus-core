@@ -2,10 +2,14 @@ class Admin::OrdersController < ApplicationController
   def create
     begin
       @order = Order.find params[:id]
-      @order.update(etransfer_link: order_params[:etransfer_link])
-      @order.send_order_to_retailer()
-      @order.send_order_to_user()
-      @order.update(status: 'verifying')
+      if @order.etransfer_link.present?
+        @order.update(etransfer_link: order_params[:etransfer_link])
+        @order.send_order_to_retailer()
+        @order.send_order_to_user()
+        @order.update(status: 'verifying')
+      else
+        render :text => 'Order already has etransfer link' and return
+      end
     rescue => e
       @order.update(status: 'unsent')
       # TODO: hook up slack/email notifier here to let us know an error has occured
