@@ -13,6 +13,7 @@ class Api::OrdersController < ApplicationController
   def create
     @user = current_api_user
     @order = @user.orders.create!(order_params)
+
     order_details_params[:order_details].each do |item|
       @order.order_details.create({
         product_id: item[:id],
@@ -21,21 +22,6 @@ class Api::OrdersController < ApplicationController
         name: item[:name]
       })
     end
-    @retailer = @order.retailer
-    update_url = request.base_url +  "/admin/orders/#{@order[:id]}/edit"
-    ticket_html = render_to_string(:partial => 'desk_ticket_confirm.html',
-                                    :locals => { user: @user,
-                                                 order: @order,
-                                                 orderDetails: @order.order_details,
-                                                 retailer: @retailer,
-                                                 documents: @user.verification_documents,
-                                                 updateUrl: update_url,
-                                                 shippingAddress: @order.shipping_address })
-    @order.send_to_retailer(update_url, ticket_html.to_json)
-
-  rescue Stripe::CardError => e
-    @order.status = "DECLINED"
-    render :json => { :errors => e.json_body[:error]}, :status => 422
   end
 
   def order_params

@@ -180,7 +180,7 @@ a[class="bulletproof-button"] {
 									</tr>
 									<tr>
 										<td align="center">
-											<a href="www.google.com">e-Transfer Deposit Link</a>
+											<a href="<%= @order.etransfer_link%>">e-Transfer Deposit Link</a>
 											<p>Security Answer: <b><%= @retailer[:name].downcase.delete(' ')%></b></p>
 										</td>
 									</tr>
@@ -200,10 +200,16 @@ a[class="bulletproof-button"] {
 								<tbody>
 									<tr>
 										<td align="center">
-											<a href="<%= @updateUrl + "?status=packaging"%>" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">ACCEPT ORDER</a>
+											<a href="<%= url_for(controller: 'admin/orders',
+        													action: 'edit',
+																	id: @order.id,
+																	status: 'packaging') %>" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">ACCEPT ORDER</a>
 										</td>
 										<td align="center">
-											<a href="<%= @updateUrl + "?status=declined"%>" class="bulletproof-button" target="_blank" style="background-color:red; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;">DECLINE ORDER</a>
+											<a href="<%= url_for(controller: 'admin/orders',
+        													action: 'edit',
+																	id: @order.id,
+																	status: 'declined') %>" class="bulletproof-button" target="_blank" style="background-color:red; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;">DECLINE ORDER</a>
 										</td>
 									</tr>
 								</tbody>

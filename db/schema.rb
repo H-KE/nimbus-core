@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026215817) do
+ActiveRecord::Schema.define(version: 20161029045535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161026215817) do
     t.string   "tracking_number"
     t.decimal  "tax_amount",           default: "0.0",       null: false
     t.string   "help_desk_ticket_id"
+    t.string   "etransfer_link"
     t.index ["help_desk_ticket_id"], name: "index_orders_on_help_desk_ticket_id", where: "((help_desk_ticket_id)::text <> NULL::text)", using: :btree
     t.index ["retailer_id"], name: "index_orders_on_retailer_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree

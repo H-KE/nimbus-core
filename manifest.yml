@@ -12,7 +12,7 @@
 ##PRODUCTION##
 ---
 applications:
-- name: development-nimbus
+- name: nimbus-app
   memory: 128M
   instances: 1
   path: .

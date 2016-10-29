@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :orders, only: [:edit, :index]
+    resources :emails, only: [:create]
   end
 end

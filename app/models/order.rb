@@ -3,20 +3,30 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :retailer
 
-  def send_to_retailer(update_url, ticket_html)
-    UserMailer.send_order_confirmation(user, self).deliver
+  def send_to_retailer()
     if retailer.uses_help_desk?
-      response = retailer.create_order_ticket(ticket_html)
+      ticket_html = render_to_string(:partial => 'desk_ticket_confirm.html',
+                                      :locals => { user: user,
+                                                   order: self,
+                                                   orderDetails: self.order_details,
+                                                   retailer: retailer,
+                                                   documents: user.verification_documents,
+                                                   updateUrl: update_url,
+                                                   shippingAddress: self.shipping_address })
+      response = retailer.create_order_ticket(ticket_html.to_json)
       if response.success?
         help_desk_ticket_id = response.body["id"]
       else
         update(status: "unsent")
       end
     else
-      RetailerMailer.send_order_confirmation(user, self, "info.nimbusfly@gmail.com", update_url).deliver
-      RetailerMailer.send_order_confirmation(user, self, retailer[:email], update_url).deliver
+      RetailerMailer.order_confirmation_email(self, "info.nimbusfly@gmail.com").deliver
+      RetailerMailer.order_confirmation_email(self, retailer[:email]).deliver
     end
-    self
+  end
+
+  def send_to_user()
+    UserMailer.order_confirmation_email(self).deliver
   end
 
   def shipping_address
