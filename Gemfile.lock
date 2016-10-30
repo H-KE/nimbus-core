@@ -188,6 +188,9 @@ GEM
       json
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
+    simple_form (3.3.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
@@ -238,6 +241,10 @@ DEPENDENCIES
   rspec-rails
   sendgrid
   shoulda-matchers
+  simple_form
   stripe
   tzinfo-data
   web-console
+
+BUNDLED WITH
+   1.13.1

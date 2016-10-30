@@ -26,6 +26,9 @@ gem 'omniauth-google-oauth2'
 # How we get paid, damn son
 gem 'stripe'
 
+# Forms
+gem 'simple_form'
+
 # Debugger
 gem 'pry'
 
