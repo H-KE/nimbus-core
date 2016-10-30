@@ -45,4 +45,12 @@ class Order < ApplicationRecord
                         addressHash["province"] + ', ' +
                         addressHash["postalCode"]
   end
+
+  def readable_status
+    return self[:status].split.map(&:capitalize).join(' ').split(/_/).join(' ')
+  end
+
+  def readable_carrier
+    return self[:carrier_code].split.map(&:capitalize).join(' ').split(/_/).join(' ')
+  end
 end

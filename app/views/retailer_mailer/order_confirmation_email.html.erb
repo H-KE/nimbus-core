@@ -121,7 +121,7 @@ a[class="bulletproof-button"] {
 																</tr>
 																<tr class="total" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
 																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; border-bottom-color: #333; border-bottom-width: 2px; border-bottom-style: solid; font-weight: 700; margin: 0; padding: 5px 0;" valign="top" width="80%">Total</td>
-																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; border-bottom-color: #333; border-bottom-width: 2px; border-bottom-style: solid; font-weight: 700; margin: 0; padding: 5px 0;" valign="top">$ <%= @order[:total_price] + @order[:delivery_fee]%></td>
+																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; border-bottom-color: #333; border-bottom-width: 2px; border-bottom-style: solid; font-weight: 700; margin: 0; padding: 5px 0;" valign="top">$ <%= @order[:total_price] + @order[:delivery_fee] + @order[:tax_amount]%></td>
 																</tr>
 															</tbody>
 														</table>
@@ -203,20 +203,10 @@ a[class="bulletproof-button"] {
 									<br>
 									<tr>
 										<td align="center">
-											<form method="post" action="<%= url_for(controller: 'admin/orders',
-	        													action: 'update_status',
-																		id: @order.id) %>">
-												<input type="hidden" name="status" value="packaging">
-											  <input type="submit" value="Accept">
-											</form>
-										</td>
-										<td align="center">
-											<form method="post" action="<%= url_for(controller: 'admin/orders',
-	        													action: 'update_status',
-																		id: @order.id) %>">
-												<input type="hidden" name="status" value="declined">
-											  <input type="submit" value="Decline">
-											</form>
+											<a href="<%= url_for(controller: 'admin/orders',
+	        													action: 'show',
+																		status: 'verifying',
+																		id: @order.id) %>" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;">Manage Acceptance</a>
 										</td>
 									</tr>
 								</tbody>
@@ -237,24 +227,12 @@ a[class="bulletproof-button"] {
 									<br>
 									<br>
 									<tr>
-										<form method="post" action="<%= url_for(controller: 'admin/orders',
-        													action: 'update_status',
-																	id: @order.id) %>">
-											<td align="center">
-											  <select name="carrier_code">
-											    <option selected="selected" value="canada_post">Canada Post</option>
-											    <option value="fedex">FedEx</option>
-											    <option value="ups">UPS</option>
-											  </select>
-											</td>
-											<td align="center">
-												<input type="text" name="tracking_number">
-											</td>
-											<td align="center">
-												<input type="hidden" name="status" value="in_transit">
-											  <input type="submit" value="Update">
-											</td>
-										</form>
+										<td align="center">
+											<a href="<%= url_for(controller: 'admin/orders',
+	        													action: 'show',
+																		status: 'packaging',
+																		id: @order.id) %>" class="bulletproof-button" target="_blank" style="background-color:#91bf46; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 12px 18px 12px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; display: inline-block;">Update Tracking Info</a>
+										</td>
 									</tr>
 								</tbody>
 							</table>

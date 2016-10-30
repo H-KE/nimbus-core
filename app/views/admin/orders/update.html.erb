@@ -82,11 +82,11 @@ a[class="bulletproof-button"] {
         								<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
         									<td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
 														<% if @order.status == 'in_transit'%>
-															<h2 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;">Order #<%= @order.id %> has been set to <b><%= @order.status %></b>.</h2>
-																<p>Carrier: <b><%= @order.carrier_code %></b></p>
+															<h2 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;">Order #<%= @order.id %> has been set to <b><%= @order.readable_status %></b>.</h2>
+																<p>Carrier: <b><%= @order.readable_carrier %></b></p>
 																<p>Tracking Number: <b><%= @order.tracking_number %></b></p>
 														<% else %>
-															<h2 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;">Order #<%= @order.id %> has been set to <b><%= @order.status %></b>.</h2>
+															<h2 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;">Order #<%= @order.id %> has been set to <b><%= @order.readable_status %></b>.</h2>
 														<% end %>
 													</td>
         								</tr>

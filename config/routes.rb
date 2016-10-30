@@ -14,9 +14,9 @@ Rails.application.routes.draw do
     resources :verification_documents, only: [:index, :create]
   end
   namespace :admin do
-    resources :orders, only: [:create] do
+    resources :orders, only: [:show] do
       collection do
-        post :update_status
+        post :update
       end
     end
   end

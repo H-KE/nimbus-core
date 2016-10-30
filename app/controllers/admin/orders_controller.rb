@@ -1,30 +1,25 @@
 class Admin::OrdersController < ApplicationController
-  def create
-    begin
-      @order = Order.find params[:id]
-      if !@order.etransfer_link.present?
-        @order.update(etransfer_link: order_params[:etransfer_link])
-        @order.send_order_to_retailer()
-        @order.update(status: 'verifying')
-      else
-        render :text => 'Order already has etransfer link' and return
-      end
-    rescue => e
-      @order.update(status: 'unsent')
-      # TODO: hook up slack/email notifier here to let us know an error has occured
-      render :text => 'error' and return
-    end
-
-    @order.send_user_status_update()
-    render :text => 'success!'
+  def show
+    @order = Order.find(order_params[:id])
+    @order_params = order_params;
+    # TODO: this is a temp workaround before a full on admin page for order is created
+    # currently, we are display the order manage page corresponding to the request status
   end
 
-  def update_status
-    @order = Order.find(order_params[:id])
-    if @order.update(order_params)
+  # TODO: need some heavy error and retailer behaviour restriction handling here
+  # Don't want them to repeated updating the order status and notifying user
+  def update
+    @order = Order.find params[:id]
+    begin
+      @order.update(order_params)
       @order.send_user_status_update()
-    else
-      render :text => "Some error occured, please try again!", :status => '404' and return
+      if order_params[:etransfer_link].present?
+        @order.send_order_to_retailer()
+      end
+    rescue => e
+      @order.update(status: 'error')
+      # TODO: hook up slack/email notifier here to let us know an error has occured
+      render :plain => 'Some error occured, please try again!' and return
     end
   end
 

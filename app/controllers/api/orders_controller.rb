@@ -13,7 +13,6 @@ class Api::OrdersController < ApplicationController
   def create
     @user = current_api_user
     @order = @user.orders.create!(order_params)
-    @order.send_order_to_user()
 
     order_details_params[:order_details].each do |item|
       @order.order_details.create({
@@ -23,6 +22,8 @@ class Api::OrdersController < ApplicationController
         name: item[:name]
       })
     end
+    
+    @order.send_order_to_user()
     # TODO: Need error handling here
   end
 
