@@ -83,13 +83,27 @@ a[class="bulletproof-button"] {
                 													action: 'update') %>">
         											<td align="center">
         											  <select name="carrier_code">
-        											    <option selected="selected" value="canada_post">Canada Post</option>
-        											    <option value="fedex">FedEx</option>
-        											    <option value="ups">UPS</option>
+																	<% if @order.carrier_code == 'canada_post' %>
+																		<option selected="selected" value="canada_post">Canada Post</option>
+	        											    <option value="fedex">FedEx</option>
+	        											    <option value="ups">UPS</option>
+																	<% elsif @order.carrier_code == 'fedex' %>
+																		<option alue="canada_post">Canada Post</option>
+																		<option selected="selected" value="fedex">FedEx</option>
+																		<option value="ups">UPS</option>
+																	<% elsif @order.carrier_code == 'ups' %>
+																		<option alue="canada_post">Canada Post</option>
+																		<option value="fedex">FedEx</option>
+																		<option selected="selected" value="ups">UPS</option>
+																	<% else %>
+																		<option selected="selected" value="canada_post">Canada Post</option>
+																		<option value="fedex">FedEx</option>
+																		<option value="ups">UPS</option>
+																	<% end %>
         											  </select>
         											</td>
         											<td align="center">
-        												<input type="text" name="tracking_number">
+        												<input type="text" name="tracking_number" value="<%= @order.tracking_number %>">
         											</td>
         											<td align="center">
                                 <input type="hidden" name="id" value="<%= @order.id %>">
@@ -101,25 +115,35 @@ a[class="bulletproof-button"] {
                         <% else %>
                           <h2 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;">Accepting Order</h2>
                           <br>
-                          <br>
-                          <tr>
-                            <td align="center">
-                              <form method="post" action="<%= url_for(controller: 'admin/orders',
-                  													action: 'update') %>">
-                                <input type="hidden" name="id" value="<%= @order.id %>">
-        												<input type="hidden" name="status" value="packaging">
-        											  <input type="submit" value="Accept" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
-          										</form>
-                            </td>
-                            <td align="center">
-                              <form method="post" action="<%= url_for(controller: 'admin/orders',
-                  													action: 'update') %>">
-                                <input type="hidden" name="id" value="<%= @order.id %>">
-        												<input type="hidden" name="status" value="declined">
-        											  <input type="submit" value="Decline" class="bulletproof-button" target="_blank" style="background-color:red; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
-          										</form>
-                            </td>
-                          </tr>
+													<p>
+														<% if @order.status == 'verifying' %>
+															<!-- Current Status: <b>Not Yet Accepted</b> -->
+														<% elsif @order.status == 'declined' %>
+															Current Status: <b>Declined</b>
+														<% else %>
+															Current Status: <b>Accepted</b>
+														<% end %>
+													</p>
+													<% if @order.status == 'verifying' %>
+	                          <tr>
+	                            <td align="center">
+	                              <form method="post" action="<%= url_for(controller: 'admin/orders',
+	                  													action: 'update') %>">
+	                                <input type="hidden" name="id" value="<%= @order.id %>">
+	        												<input type="hidden" name="status" value="packaging">
+	        											  <input type="submit" value="Accept" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
+	          										</form>
+	                            </td>
+	                            <td align="center">
+	                              <form method="post" action="<%= url_for(controller: 'admin/orders',
+	                  													action: 'update') %>">
+	                                <input type="hidden" name="id" value="<%= @order.id %>">
+	        												<input type="hidden" name="status" value="declined">
+	        											  <input type="submit" value="Decline" class="bulletproof-button" target="_blank" style="background-color:red; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
+	          										</form>
+	                            </td>
+	                          </tr>
+													<% end %>
                         <% end %>
       								</tbody>
       							</table>
