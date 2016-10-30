@@ -51,6 +51,6 @@ class Order < ApplicationRecord
   end
 
   def readable_carrier
-    return self[:carrier_code].split.map(&:capitalize).join(' ').split(/_/).join(' ')
+    return self[:carrier_code].split(/_/).join(' ').split.map(&:capitalize).join(' ')
   end
 end
