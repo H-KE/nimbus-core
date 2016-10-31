@@ -6,18 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-users = user = User.create! :email => 'admin@nimbusfly.co', :password => 'topsecret', :password_confirmation => 'topsecret', :first_name => 'Admin', :last_name => 'Test'
-
 retailers = Retailer.create!([
   {
     image_url: 'https://static1.squarespace.com/static/56ad28197da24fafb23f972c/56ad32b3f8baf35958c26d38/56b93a2f01dbae64ff7226d5/1456210131673/279A6571.jpg?format=500w',
     name: 'Alair Vaporizer',
     address: '588 Dufferin Street, M4A 2M5',
+    bio: 'Come in from the Clouds',
     description: 'Extend the good life to the air you breathe. With a subtle profile and a joyful disposition, an Alair vaporizer is enjoyable, portable and rarely out of place. Whatever your lifestyle, just plug, vape and play.',
     mail: true,
     delivery: true,
     pickup: true,
     shipping_fee: 10,
+    free_shipping_cap: 150,
     email: "peter@nimbusfly.co",
     phone_number: "6474624663",
     help_desk_type: "FRESHDESK",
@@ -28,11 +28,13 @@ retailers = Retailer.create!([
     image_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbdSNJNo93KSBu2IJZSZSD_4EDCVpVHdh7a39exPGrQC_6pfpMVA",
     name: 'The Green Cross',
     address: '170 Islington Ave, M9V 2X5',
+    bio: 'Premier Cannabis cultivated in BC',
     description: 'Dedicated to the betterment of our fellow neighbours, we source and distribute medicinal cannabis products of the utmost quality. We specialize in a variety of products including flowers, capsules, tinctures, and edibles.',
     mail: true,
     delivery: false,
     pickup: false,
     shipping_fee: 10,
+    free_shipping_cap: 150,
     email: "peter@nimbusfly.co",
     phone_number: "6474624663",
     help_desk_type: "FRESHDESK",
@@ -40,9 +42,36 @@ retailers = Retailer.create!([
     help_desk_auth: "GIZ3LNdanPbTZKsAlTcm"
   },
   {
-    image_url:"https://d3ix816x6wuc0d.cloudfront.net/i/357531/w768",
+    image_url: 'https://assets.greenrushdaily.com/wp-content/uploads/2016/01/denver-hosts-cannabis-wedding-expo.jpg',
+    name: 'MC Medical',
+    address: 'Hamilton, ON',
+    bio: 'Coming Soon',
+    description: 'Based in Hamilton, Ontario Canada, Best BUD Canada is dedicated to providing a safe, practical and discreet access to medicinal cannabis and cannabis-related products at affordable prices to qualified members. We are committed to providing the best possible healthcare and simplest order process for our valued members. The use of this website is limited to Canadian residents over the age of 19 who possess valid medical documentation from a Health Care Practitioner of a diagnosis and related symptom/s for which cannabis has potential medical applications.',
+    mail: true,
+    delivery: false,
+    pickup: false,
+    shipping_fee: 20,
+    email: "peter@nimbusfly.co",
+    phone_number: "647-853-8697"
+  },
+  {
+    image_url: 'https://s3.amazonaws.com/media.nimbusfly.co/default/bestbudcanada.jpg',
+    name: 'Best Bud Canada',
+    address: 'Oshawa, ON',
+    bio: 'Coming Soon',
+    description: 'We are a mobile medical dispensary that has compassion we deliver in the durham region within 1 hour!! we offer mail order to anywere in Canada please call or email to place an order we offer a range of different strains edibles concentrates and more. Accepted verification documents includes government issued photo ID, MMPR , LP card or doctor prescription.',
+    mail: true,
+    delivery: true,
+    pickup: true,
+    shipping_fee: 21,
+    email: "peter@nimbusfly.co",
+    phone_number: "647-853-8697"
+  },
+  {
+    image_url:"https://cdn1.vox-cdn.com/uploads/chorus_asset/file/7180063/silverpeak.0.jpg",
     name: 'Pure Releaf',
     address: '897 Dundas ST W, Toronto',
+    bio: 'Coming Soon',
     description: 'Dedicated to the betterment of our fellow neighbours, we source and distribute medicinal cannabis products of the utmost quality. We specialize in a variety of products including flowers, concentrates, Pre-rolls, and others.',
     mail: true,
     delivery: false,
@@ -55,6 +84,7 @@ retailers = Retailer.create!([
     image_url: 'https://pbs.twimg.com/media/CVaQybOXIAAPrwG.png',
     name: 'The High Line',
     address: '2012 Neilson Avenue, M1M 1V1',
+    bio: 'Coming Soon',
     description: 'No description found for this dispensary.',
     mail: true,
     delivery: true,
@@ -62,19 +92,7 @@ retailers = Retailer.create!([
     shipping_fee: 18,
     email: "peter@nimbusfly.co",
     phone_number: "9999999999"
-  },
-  {
-    image_url: 'https://d2kxqxnk1i5o9a.cloudfront.net/uploads/avatars/deliveries/14283/large_Medical-Marijuana.jpg',
-    name: 'MC Medical',
-    address: 'Oshawa, ON',
-    description: 'We are a mobile medical dispensary that has compassion we deliver in the durham region within 1 hour!! we offer mail order to anywere in Canada please call or email to place an order we offer a range of different strains edibles concentrates and more. Accepted verification documents includes government issued photo ID, MMPR , LP card or doctor prescription.',
-    mail: true,
-    delivery: true,
-    pickup: true,
-    shipping_fee: 21,
-    email: "peter@nimbusfly.co",
-    phone_number: "647-853-8697"
-  },
+  }
 ])
 
 retailers.each do |retailer|
@@ -447,30 +465,30 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
     ])
   elsif retailer.name == 'MC Medical'
     retailer.products.create!([
-      {
-        name: "Bubba O.G",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537645_bubba_o.g.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3537645_bubba_o.g.jpg",
-        prices: [12, 40, 75, 130, 250],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "Canadian breeders at Dr. Greenthumb Seeds crossed the popular medicinal strain Pre -98 Bubba Kush with Ghost OG to create a hybrid with the flavor of Bubba, the potency of OG, and yields better than either of the two. With a sweet, pungent smell and flavors of fruity hash and diesel, Bubba OG is a potent strain suitable for treating pain, muscle spasms, nausea, and insomnia.",
-        thc: 0,
-        cbd: 0,
-        subspecies: "Indica",
-        category: "Indica"
-      },
-      {
-        name: "Green Crack",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537693_green_crack.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3537693_green_crack.jpg",
-        prices: [12, 40, 75, 130, 250],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "Don’t let the name fool you: this is pure cannabis. Few strains compare to Green Crack’s sharp energy and focus as it induces an invigorating mental buzz that keeps you going throughout the day. With a tangy, fruity flavor redolent of mango, Green Crack is the perfect daytime medication for patients treating fatigue, stress, and depression. Green Crack has branched into two genetic lineages, the most common of which is its sativa line descended from Skunk #1. The 75% indica variety of Green Crack is said to have come from an Afghani strain, and is marked by a tighter bud structure. Because its name perpetuates a negative image of cannabis, some people have taken to calling this strain Cush (with a ‘C’) or Green Cush instead.",
-        thc: 0,
-        cbd: 0,
-        subspecies: "Sativa",
-        category: "Sativa"
-      },
+      # {
+      #   name: "Bubba O.G",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537645_bubba_o.g.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/indica.jpg?X-Amz-Date=20161030T194553Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=fb8b2952255d5012027cb2dfd681467752b76367c312f7504f768c10a7c6244e&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [12, 40, 75, 130, 250],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "Canadian breeders at Dr. Greenthumb Seeds crossed the popular medicinal strain Pre -98 Bubba Kush with Ghost OG to create a hybrid with the flavor of Bubba, the potency of OG, and yields better than either of the two. With a sweet, pungent smell and flavors of fruity hash and diesel, Bubba OG is a potent strain suitable for treating pain, muscle spasms, nausea, and insomnia.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Indica",
+      #   category: "Indica"
+      # },
+      # {
+      #   name: "Green Crack",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537693_green_crack.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/sativa.jpg?X-Amz-Date=20161030T194601Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=cd59462c214a04df94324cd3a0d1fe52ca63a12e671d15dd1379468c40d55ac0&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [12, 40, 75, 130, 250],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "Don’t let the name fool you: this is pure cannabis. Few strains compare to Green Crack’s sharp energy and focus as it induces an invigorating mental buzz that keeps you going throughout the day. With a tangy, fruity flavor redolent of mango, Green Crack is the perfect daytime medication for patients treating fatigue, stress, and depression. Green Crack has branched into two genetic lineages, the most common of which is its sativa line descended from Skunk #1. The 75% indica variety of Green Crack is said to have come from an Afghani strain, and is marked by a tighter bud structure. Because its name perpetuates a negative image of cannabis, some people have taken to calling this strain Cush (with a ‘C’) or Green Cush instead.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Sativa",
+      #   category: "Sativa"
+      # },
       {
         name: "Compassion Bud",
         images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3417655_compassion.jpg"],
@@ -484,101 +502,137 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         category: "Sativa"
       },
       {
-        name: "Goldenberry",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3601007_IMG_20161014_124420.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3601007_IMG_20161014_124420.jpg",
-        prices: [12, 40, 75, 140, 280],
+        name: "Bruce Banner",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg",
+        prices: [14, 45, 80, 150, 280],
         price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "60% Sativa, 40% Indica, Sativa dominant. The Goldberry strain is a result of crossing the very popular indica Pot of Gold with Blueberry. Goldberry produces big, fluffy buds that are covered in crystals and often have deep orangey-red hairs. The flowers smell like fresh fruit—lemons and berries, to be specific—while the taste is reminiscent of blueberry lemonade with a slight skunky aftertaste. This hybrid is described as optimal for pain relief and relaxation due to its indica qualities.",
+        description: "Sativa dominant high THC content 24%-29%",
+        thc: 26,
+        cbd: 0,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      },
+      {
+        name: "Sour Tangie",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg",
+        prices: [12, 40, 75, 140, 270],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Sativa dominate hybrid 80% sativa 20% indica",
         thc: 0,
         cbd: 0,
         subspecies: "Hybrid",
         category: "Hybrid"
       },
       {
-        name: "Rocklock",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3600425_IMG_20161014_124019.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3600425_IMG_20161014_124019.jpg",
-        prices: [12, 40, 75, 140, 280],
+        name: "Texada Timewarp",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg",
+        prices: [12, 40, 75, 140, 270],
         price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "85% Indica, 15% Sativa. Rocklock is a cross between the two strains Rockstar and Warlock. The smell of this herb is sweet and fruity. The stone is surprisingly stimulating given that it is primary an indica strain; which has some rather nice advantages when going out to a concert for example. Rocklock tastes hash-like and burns fast and evenly. On the medicinal side, this strain can offer relief from muscle tension and mild to medium aches and pains.",
+        description: "Sativa Dom",
         thc: 0,
         cbd: 0,
         subspecies: "Hybrid",
         category: "Hybrid"
       },
-      {
-        name: "Buddha Tahoe O.G",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3600373_IMG_20161014_124748.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3600373_IMG_20161014_124748.jpg",
-        prices: [12, 40, 75, 140, 280],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "50% Indica, 50% Sativa. Buddha Tahoe is what you get when Big Buddha Seeds reverses Cali Connection’s Tahoe OG Kush to create their own rendition of this indica staple. Like its OG ancestors, Buddha Tahoe maintains a zesty lemon and earthy hash aroma typical of kush varieties. Potent and long-lasting, Buddha Tahoe launches you into to the highest level of cerebral euphoria which won this strain 3rd place in the 2011 High Times Cannabis Cup.",
-        thc: 0,
-        cbd: 0,
-        subspecies: "Hybrid",
-        category: "Hybrid"
-      },
-      {
-        name: "AAA Pink Kush",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3557135_pink_kush.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3557135_pink_kush.jpg",
-        prices: [11, 40, 80, 140, 275],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "Pink Kush, as coveted as its OG Kush relative, is an indica-dominant hybrid with powerful body-focused effects. In its exceptional variations, pink hairs burst from bright green buds barely visible under a blanket of sugar-like trichomes, with traces of a sweet vanilla and candy perfume. The potency of this strain could be considered overpowering, and even small doses are known to eliminate pain, insomnia, and appetite loss. Growers have to wait 10 to 11 weeks for Pink Kush’s flowering, but high yields of top-shelf buds are worth the wait.",
-        thc: 0,
-        cbd: 0,
-        subspecies: "Hybrid",
-        category: "Hybrid"
-      },
-      {
-        name: "Pink Pineapple Kush",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3557135_pink_kush.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3305302_pink_pineapple.jpg",
-        prices: [12, 40, 75, 125, 240],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "Pink Pineapple Kush is hybrid of Indica and Sativa. Most of its genetic material comes from an Indica strain originally grown in the mountainous Hindu Kush region that runs through central Afghanistan and across the border with Pakistan. As its name suggests, this weed has a unique taste with tropical fruity flavors underpinned by pineapple. Pineapple Kush delivers a powerful body hit followed by a stimulating mind stone. Even experienced smokers treat this potent strain with caution. Medicinally, it can help in the relief of muscle and joint pain. ",
-        thc: 0,
-        cbd: 0,
-        subspecies: "Hybrid",
-        category: "Hybrid"
-      },
-      {
-        name: "Master Kush",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537536_master_kush.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3537536_master_kush.jpg",
-        prices: [10, 35, 70, 125, 230],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "Master Kush is a popular indica cross created out of two landrace strains from different parts of the Hindu Kush region. Master Kush is bred by the Dutch White Label Seed Company, located in Amsterdam. During maturation the plant produces a subtle earthy, citrus smell with a hint of incense, which is often described as a vintage flavor. The taste of Master Kush is reminiscent of the famous hard-rubbed charas hash. This strain holds a superb balance of full-body relaxation without the mind-numbing effect that many indica strains produce. Instead, Master Kush offers a sharpened sensory awareness that can bring out the best of any activity.",
-        thc: 0,
-        cbd: 0,
-        subspecies: "Hybrid",
-        category: "Hybrid"
-      },
-      {
-        name: "Blueberry Kush",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537681_blueberry_kush.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3537681_blueberry_kush.jpg",
-        prices: [10, 30, 60, 120, 210],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "Blueberry Kush is a strong indica strain that slowly brings on a heavy body sensation, helping patients forget their pain and relax. Originally from Oregon, this strain is a hybrid of Blueberry and OG Kush, which is evident in its fresh berry aroma with notes of earthy herbalness.",
-        thc: 0,
-        cbd: 0,
-        subspecies: "Hybrid",
-        category: "Hybrid"
-      },
-      {
-        name: "Pineapple Kush",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3246131_pineapple.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3246131_pineapple.jpg",
-        prices: [10, 30, 60, 120, 210],
-        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
-        description: "Pineapple Kush marijuana strain has an aroma of pineapple with accents of caramel and butter. The flavor is described as a subtle sweet pineapple taste with a mint undertone. While the breeder of this strain is unknown, its parents are Pineapple and Master Kush. The buds are brown/green in color and covered with amber crystals. With a THC content of up to 15% and CBD of 0.14%, the buzz is commonly described as cerebral, with a light body sensation.",
-        thc: 15,
-        cbd: 0.14,
-        subspecies: "Hybrid",
-        category: "Hybrid"
-      },
+      # {
+      #   name: "Goldenberry",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3601007_IMG_20161014_124420.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [12, 40, 75, 140, 280],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "60% Sativa, 40% Indica, Sativa dominant. The Goldberry strain is a result of crossing the very popular indica Pot of Gold with Blueberry. Goldberry produces big, fluffy buds that are covered in crystals and often have deep orangey-red hairs. The flowers smell like fresh fruit—lemons and berries, to be specific—while the taste is reminiscent of blueberry lemonade with a slight skunky aftertaste. This hybrid is described as optimal for pain relief and relaxation due to its indica qualities.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
+      # {
+      #   name: "Rocklock",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3600425_IMG_20161014_124019.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [12, 40, 75, 140, 280],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "85% Indica, 15% Sativa. Rocklock is a cross between the two strains Rockstar and Warlock. The smell of this herb is sweet and fruity. The stone is surprisingly stimulating given that it is primary an indica strain; which has some rather nice advantages when going out to a concert for example. Rocklock tastes hash-like and burns fast and evenly. On the medicinal side, this strain can offer relief from muscle tension and mild to medium aches and pains.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
+      # {
+      #   name: "Buddha Tahoe O.G",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3600373_IMG_20161014_124748.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [12, 40, 75, 140, 280],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "50% Indica, 50% Sativa. Buddha Tahoe is what you get when Big Buddha Seeds reverses Cali Connection’s Tahoe OG Kush to create their own rendition of this indica staple. Like its OG ancestors, Buddha Tahoe maintains a zesty lemon and earthy hash aroma typical of kush varieties. Potent and long-lasting, Buddha Tahoe launches you into to the highest level of cerebral euphoria which won this strain 3rd place in the 2011 High Times Cannabis Cup.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
+      # {
+      #   name: "AAA Pink Kush",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3557135_pink_kush.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [11, 40, 80, 140, 275],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "Pink Kush, as coveted as its OG Kush relative, is an indica-dominant hybrid with powerful body-focused effects. In its exceptional variations, pink hairs burst from bright green buds barely visible under a blanket of sugar-like trichomes, with traces of a sweet vanilla and candy perfume. The potency of this strain could be considered overpowering, and even small doses are known to eliminate pain, insomnia, and appetite loss. Growers have to wait 10 to 11 weeks for Pink Kush’s flowering, but high yields of top-shelf buds are worth the wait.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
+      # {
+      #   name: "Pink Pineapple Kush",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3557135_pink_kush.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [12, 40, 75, 125, 240],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "Pink Pineapple Kush is hybrid of Indica and Sativa. Most of its genetic material comes from an Indica strain originally grown in the mountainous Hindu Kush region that runs through central Afghanistan and across the border with Pakistan. As its name suggests, this weed has a unique taste with tropical fruity flavors underpinned by pineapple. Pineapple Kush delivers a powerful body hit followed by a stimulating mind stone. Even experienced smokers treat this potent strain with caution. Medicinally, it can help in the relief of muscle and joint pain. ",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
+      # {
+      #   name: "Master Kush",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537536_master_kush.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [10, 35, 70, 125, 230],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "Master Kush is a popular indica cross created out of two landrace strains from different parts of the Hindu Kush region. Master Kush is bred by the Dutch White Label Seed Company, located in Amsterdam. During maturation the plant produces a subtle earthy, citrus smell with a hint of incense, which is often described as a vintage flavor. The taste of Master Kush is reminiscent of the famous hard-rubbed charas hash. This strain holds a superb balance of full-body relaxation without the mind-numbing effect that many indica strains produce. Instead, Master Kush offers a sharpened sensory awareness that can bring out the best of any activity.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
+      # {
+      #   name: "Blueberry Kush",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3537681_blueberry_kush.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [10, 30, 60, 120, 210],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "Blueberry Kush is a strong indica strain that slowly brings on a heavy body sensation, helping patients forget their pain and relax. Originally from Oregon, this strain is a hybrid of Blueberry and OG Kush, which is evident in its fresh berry aroma with notes of earthy herbalness.",
+      #   thc: 0,
+      #   cbd: 0,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
+      # {
+      #   name: "Pineapple Kush",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3246131_pineapple.jpg"],
+      #   thumbnail: "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg?X-Amz-Date=20161030T195113Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=f9b0dbb76743120d595c939f178bec959b7f8872af4157d14915b1ba13332deb&X-Amz-Credential=ASIAJZ4ORHSJVDMPDVHA/20161030/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEEwaDFKKbBt5jVKOcDAX0SL6AXiP/kV4FMHaSyphu%2BkiDwdIfaPLmY6fMAHaeY%2Bz3uAxHzE1o7Bh2p/VVBMnLJiSy/w3y/KVF87wsRlA1r24yIfIt0UMz1qjSAkU0JUSX5AOYgKniwor21FzxJg8WqqwY8dXlbo1k7FaXmP8TU3dHu5YPpLyngX5zDQOU/tv/EfwrqfcVNtGua75PzOqvh5S5TSJ8/WSW%2BQGwj2sVt6U7VoGbZooVIqkkNXrQGehDnzdBPBQfGOhvnDtfiTZRXV6Gbaqm14DKZaRNp8QW43GRXRq/3HTRq1CpCByI/bUdfnjExn5Af64sLk3J8lm36sa9qYkPABI7e8iIa4omP/YwAU%3D",
+      #   prices: [10, 30, 60, 120, 210],
+      #   price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+      #   description: "Pineapple Kush marijuana strain has an aroma of pineapple with accents of caramel and butter. The flavor is described as a subtle sweet pineapple taste with a mint undertone. While the breeder of this strain is unknown, its parents are Pineapple and Master Kush. The buds are brown/green in color and covered with amber crystals. With a THC content of up to 15% and CBD of 0.14%, the buzz is commonly described as cerebral, with a light body sensation.",
+      #   thc: 15,
+      #   cbd: 0.14,
+      #   subspecies: "Hybrid",
+      #   category: "Hybrid"
+      # },
       {
         name: "Phyto (with golden ticket)",
         images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3665223_IMG_20161022_171605.jpg"],
@@ -597,17 +651,29 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3557100_gold_seal.jpg",
         prices: [10, 20, 35],
         price_labels: ["0.5g", "1g", "2g"],
-        description: "Gold Seal Hash",
+        description: "Gold seal hash 60$ per 1/8th 20$ per gram",
         thc: 0,
         cbd: 0,
         subspecies: "Hash",
         category: "Extract"
       },
       {
+        name: "QTonic Terpenes",
+        images: ["https://weedmaps.com/assets/bluedream/wm-missing-menu-item-image.png"],
+        thumbnail: "https://weedmaps.com/assets/bluedream/wm-missing-menu-item-image.png",
+        prices: [35],
+        price_labels: ["1g"],
+        description: "Sativa and hybrid available, $35 per gram",
+        thc: 0,
+        cbd: 0,
+        subspecies: "Concentrate",
+        category: "Extract"
+      },
+      {
         name: "Raw c02 Distilite",
         images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3665218_IMG_20161022_172836.jpg"],
         thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3665218_IMG_20161022_172836.jpg",
-        prices: [10, 20, 35],
+        prices: [45, 80, 150],
         price_labels: ["0.5g", "1g", "2g"],
         description: "Clear Raw c02 Distilite 97%. By high grade extracts",
         thc: 97,
@@ -615,18 +681,18 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         subspecies: "Concentrate",
         category: "Extract"
       },
-      {
-        name: "Pheonix Tears 500mg THC oil",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3508891_phoenix_tears.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3508891_phoenix_tears.jpg",
-        prices: [30],
-        price_labels: ["each"],
-        description: "500 mg thc for oral use great for curing caner and much more.",
-        thc: 500,
-        cbd: 0,
-        subspecies: "Edible",
-        category: "Edible"
-      },
+      # {
+      #   name: "Pheonix Tears 500mg THC oil",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3508891_phoenix_tears.jpg"],
+      #   thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3508891_phoenix_tears.jpg",
+      #   prices: [30],
+      #   price_labels: ["each"],
+      #   description: "500 mg thc for oral use great for curing caner and much more.",
+      #   thc: 500,
+      #   cbd: 0,
+      #   subspecies: "Edible",
+      #   category: "Edible"
+      # },
       {
         name: "Pure CBD oil 65 mg",
         images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3508916_cbd_oil.jpg"],
@@ -636,6 +702,18 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         description: "65 mg of CBD for oral use.",
         thc: 0,
         cbd: 65,
+        subspecies: "Edible",
+        category: "Edible"
+      },
+      {
+        name: "Mota Jelly Candies",
+        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3701636_IMG_20161027_160527.jpg"],
+        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3701636_IMG_20161027_160527.jpg",
+        prices: [25],
+        price_labels: ["each"],
+        description: "Mota jelly candies multiple flavours and indica and sativa",
+        thc: 0,
+        cbd: 0,
         subspecies: "Edible",
         category: "Edible"
       },
@@ -651,18 +729,18 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         subspecies: "Edible",
         category: "Edible"
       },
-      {
-        name: "Pixie Pop (COLA)",
-        images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3508940_pixie_pop.jpg"],
-        thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3508940_pixie_pop.jpg",
-        prices: [7],
-        price_labels: ["each"],
-        description: "Infused pop 125 mg of THC 6 mg CBD Pixie brand.",
-        thc: 125,
-        cbd: 6,
-        subspecies: "Edible",
-        category: "Edible"
-      },
+      # {
+      #   name: "Pixie Pop (COLA)",
+      #   images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3508940_pixie_pop.jpg"],
+      #   thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3508940_pixie_pop.jpg",
+      #   prices: [7],
+      #   price_labels: ["each"],
+      #   description: "Infused pop 125 mg of THC 6 mg CBD Pixie brand.",
+      #   thc: 125,
+      #   cbd: 6,
+      #   subspecies: "Edible",
+      #   category: "Edible"
+      # },
       {
         name: "MJ Creams",
         images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3278050_pure_mj.jpg"],
@@ -746,7 +824,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         category: "Gear"
       },
       {
-        name: "420 Pen Pal Cartridges 500 mg Liquid Shatter",
+        name: "Pre-rolled",
         images: ["https://images.weedmaps.com/pictures/listings/283/515/853/large/3208046_large_PREE-ROLL_1024x1024.png"],
         thumbnail: "https://images.weedmaps.com/pictures/listings/283/515/853/medium_oriented/3208046_large_PREE-ROLL_1024x1024.png",
         prices: [10],
@@ -755,8 +833,154 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Hybrid",
-        category: "Preroll"
+        category: "Prerolls"
       },
+    ])
+  elsif retailer.name == 'Best Bud Canada'
+    retailer.products.create!([
+      {
+        name: "Alien Dog",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/indica.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Descending from Northern California and Afghanistan genetics, Alien Dawg is a cross between Chemdawg and Alien Technology with a THC content of up to 20%. With a sour and pungent odor, Alien Dawg has a light, bitter taste and presents brilliant mind and body effects.",
+        thc: 24,
+        cbd: 1,
+        subspecies: "Indica",
+        category: "Indica"
+      },
+      {
+        name: "MK Ultra",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/indica.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Named after the methods of mental manipulation employed by the CIA’s Project MKUltra, this indica-dominant strain stands apart due to its powerful cerebral effects. A cross between mostly-sativa hybrid OG Kush and indica G-13, this strain is bred by TH Seeds and won 1st place Indica at the High Times Cannabis Cup in 2003 and 2nd place in 2004. Indoor growing is facilitated by the plant’s short stature, and its above average yield delivers particularly sticky, dense, pungent flowers. MK Ultra is renowned for its ‘hypnotic’ effects that are fast-acting and best used when strong medication is desired. As evidenced by its collection of awards, this indica is one of the strongest in the world. It might be best for a day when not getting off the couch would be fine.",
+        thc: 18,
+        cbd: 1,
+        subspecies: "Indica",
+        category: "Indica"
+      },
+      {
+        name: "LA Confidential",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/indica.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "LA Confidential is known as a very popular and successful strain. Its buds have a frosty, lime green appearance and little purple leaves. The taste is smooth and piney, with a classic skunky aroma that does not linger for too long. Overall, LA Confidential is a well-rounded strain that delivers a fast-approaching sensation that is both psychedelic and super calming on the mind and body. For newer patients seeking relief, LA Confidential can both lull you to sleep and treat acute pain.",
+        thc: 21,
+        cbd: 1,
+        subspecies: "Indica",
+        category: "Indica"
+      },
+      {
+        name: "The Doctor",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/indica.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Bred by Green House Seeds, The Doctor is an indica-dominant strain designed to treat a myriad of unpleasant symptoms such as pain, nausea, appetite loss, and insomnia. Its name also comes in tribute to the motorcycle racer Valentino Rossi, also called “The Doctor.” Heavy sedating effects act fast, leaving you feeling pacified and calm. Earthy flavors soured by skunky, fruity notes arrive on the inhale, making their exit with the taste of hashy spice. Great White Shark, Super Skunk, and an unnamed South Indian parent lend The Doctor its genetic blueprint.",
+        thc: 24,
+        cbd: 1.5,
+        subspecies: "Indica",
+        category: "Indica"
+      },
+      {
+        name: "Night Nurse",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/indica.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Night Nurse is an indica-dominant strain from Reeferman Seeds that combines genetics from BC Hash Plant, Harmony, and Fire OG. It’s commonly used to fight anxiety, stress, insomnia and chronic pain. Are you having trouble sleeping? This 80/20 indica provides a polite balance of relaxing cerebral and body effects, making this the perfect nighttime sleeping aid.",
+        thc: 20,
+        cbd: 1,
+        subspecies: "Indica",
+        category: "Indica"
+      },
+      {
+        name: "Harlequin",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/sativa.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Harlequin is a 75/25 sativa-dominant strain renowned for its reliable expression of CBD. A descendant of Colombian Gold, a Nepali indica, and Thai, and Swiss landrace strains, you can depend on Harlequin to provide clear-headed, alert sativa effects. Unlike most high-CBD strains, Harlequin almost always develops a CBD:THC ratio of 5:2, making this strain one of the most effective out there for treatment of pain and anxiety, as CBD counteracts THC’s paranoia while amplifying its painkilling properties. Flavors can range from earthy musk to sweet mango, but without a doubt, what draws crowds to Harlequin is its ability to relax without sedation, and to relieve without intoxication.",
+        thc: 2,
+        cbd: 7,
+        subspecies: "Sativa",
+        category: "Sativa"
+      },
+      {
+        name: "Ice Cream",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "This indica-dominant 60/40 strain bred by Paradise Seeds creates a great hybrid balance of effects. Much like the frozen treat, Ice Cream has a smooth, creamy taste.",
+        thc: 18,
+        cbd: 7,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      },
+      {
+        name: "Blue Widow",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Blue Widow is a favorite strain that provides consumers with both uplifting and calming effects. These flowers will have a strong sweet aroma that may also include sour citrus or pine. The buds can be colorful, with tints of blue and purple, and should have a coat of long orange hairs. Slightly indica-dominant, this Widow plays against type, growing taller than most indicas and providing more mental, heady effects. In higher doses, the blissful relaxation this strain provides may lead to drowsiness and help you get to sleep. A cross between Blueberry and White Widow, Blue Widow is sometimes also called Berry White, White Berry, and Blue Venom.",
+        thc: 18,
+        cbd: 1,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      },
+      {
+        name: "Critical Plus",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Critical Plus is a balanced hybrid cross between Skunk and Big Bud.",
+        thc: 22,
+        cbd: 1,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      },
+      {
+        name: "ChemDawg",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Chemdawg has developed quite the name for itself over the years. Between its mysterious origin, ambiguous genetics, and the plethora of successful crosses the strain has produced, Chemdawg has practically secured itself a permanent place in the cannabis hall of fame. The original source of powerhouse strains like Sour Diesel and OG Kush, Chemdawg is known for its distinct, diesel-like aroma. Pungent and sharp, you’ll be able to smell this hybrid from a mile away. Cannabis newbies be warned: Chemdawg tends to be very potent. Depending on grow conditions, this strain tends to have THC levels of 15-20%. Consumers can expect to have a very cerebral experience, coupled with a strong heavy-bodied feeling.",
+        thc: 25,
+        cbd: 0.1,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      },
+      {
+        name: "Confidential Cheese",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Confidential Cheese by DNA Genetics is a crossbred hybrid of Cheese and LA Confidential. This indica-dominant strain has pale green crystal-covered buds with a sour cheese aroma inherited from its parent. Medical patients have used the potent and heavy effects of Confidential Cheese to treat severe pain, insomnia, and lost appetite. For growers, this strain finishes flowering in 8 to 9 weeks with moderate yields.",
+        thc: 25,
+        cbd: 1,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      },
+      {
+        name: "Kushage",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "This sativa-dominant marijuana hybrid strain was developed to be a resilient, hardy grower and won its breeders at TH Seeds 3rd place in the sativa category at the 2005 High Times Cannabis Cup. Kushage plants come from OG Kush and SAGE parents, and like many sativas, they have a slightly longer flowering time at 10-11 weeks. These plants have lots of branches with dark green leaves, but its buds are light green and smell like fresh cut pine. Kushage is a good choice for a cerebral buzz and might just get those creative juices flowing.",
+        thc: 20,
+        cbd: 1,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      },
+      {
+        name: "Chem Valley Kush",
+        images: ["https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"],
+        prices: [8.5, 29.75, 59.5, 119, 238],
+        price_labels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
+        description: "Chem Valley Kush is a sativa-leaning hybrid cross between Chemdawg and SFV OG Kush bred by Cali Connection.",
+        thc: 22,
+        cbd: 1,
+        subspecies: "Hybrid",
+        category: "Hybrid"
+      }
     ])
   elsif retailer.name == 'Pure Releaf'
     retailer.products.create!([

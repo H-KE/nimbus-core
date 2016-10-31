@@ -10,6 +10,6 @@ class Api::RetailersController < ApplicationController
   end
 
   def channel
-    @retailers = Retailer.where(params[:distribution]).order(:id)
+    @retailers = Retailer.where(params[:distribution]).order(:updated_at)
   end
 end

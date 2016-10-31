@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20161030225453) do
     t.string   "help_desk_type",    default: "NONE"
     t.string   "help_desk_api_url"
     t.string   "help_desk_auth"
+    t.string   "bio"
+    t.decimal  "free_shipping_cap"
   end
 
   create_table "users", force: :cascade do |t|

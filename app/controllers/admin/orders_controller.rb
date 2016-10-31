@@ -19,7 +19,7 @@ class Admin::OrdersController < ApplicationController
     rescue => e
       @order.update(status: 'error')
       # TODO: hook up slack/email notifier here to let us know an error has occured
-      render :plain => 'Some error occured, please try again!' and return
+      render :plain => e and return
     end
   end
 
