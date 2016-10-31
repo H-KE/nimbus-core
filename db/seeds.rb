@@ -20,7 +20,7 @@ retailers = Retailer.create!([
     free_shipping_cap: 100,
     email: "peter@nimbusfly.co",
     phone_number: "6474624663",
-    help_desk_type: "FRESHDESK",
+    help_desk_type: "NONE",
     help_desk_api_url: "https://nimbusfly.freshdesk.com",
     help_desk_auth: "GIZ3LNdanPbTZKsAlTcm"
   },
@@ -37,7 +37,7 @@ retailers = Retailer.create!([
     free_shipping_cap: 100,
     email: "peter@nimbusfly.co",
     phone_number: "6474624663",
-    help_desk_type: "FRESHDESK",
+    help_desk_type: "NONE",
     help_desk_api_url: "https://nimbusfly.freshdesk.com",
     help_desk_auth: "GIZ3LNdanPbTZKsAlTcm"
   },
