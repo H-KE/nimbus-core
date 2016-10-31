@@ -9,7 +9,11 @@ Rails.application.routes.draw do
       end
       resources :products, only: [:index]
     end
-    resources :users, only: [:show, :update]
+    resources :users, only: [:update] do
+      collection do
+        get :current_user
+      end
+    end
     resources :orders, only: [:index, :show, :create]
     resources :addresses, only: [:create, :show]
     resources :verification_documents, only: [:index, :create]

@@ -1,12 +1,12 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_api_user!
 
-  def update
+  def update_user
     @user = current_api_user
     @user.update(user_params)
   end
 
-  def show
+  def current_user
     @user = current_api_user
     @documents = @user.verification_documents.all
     @addresses = @user.addresses.all
