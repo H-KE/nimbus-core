@@ -23,7 +23,7 @@ class Api::OrdersController < ApplicationController
       })
     end
 
-    # @order.send_order_to_user()
+    @order.send_order_to_user()
     # TODO: Need error handling here
   end
 

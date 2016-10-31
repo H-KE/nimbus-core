@@ -38,12 +38,12 @@ class Order < ApplicationRecord
   end
 
   def shipping_address
-    addressHash = JSON.parse address
-    @shipping_address = addressHash["streetAndNumber"] + ', ' +
-                        addressHash["aptNumber"] + ', ' +
-                        addressHash["city"] + ', ' +
-                        addressHash["province"] + ', ' +
-                        addressHash["postalCode"]
+    address = self.address
+    @shipping_address = address.primary + ', ' +
+                        address.secondary + ', ' +
+                        address.city + ', ' +
+                        address.province + ', ' +
+                        address.postal_code
   end
 
   def readable_status
