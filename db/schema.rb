@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030193844) do
+ActiveRecord::Schema.define(version: 20161031002249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20161030193844) do
     t.string   "help_desk_auth"
     t.string   "bio"
     t.decimal  "free_shipping_cap"
+    t.boolean  "medical",           default: false,  null: false
   end
 
   create_table "users", force: :cascade do |t|
