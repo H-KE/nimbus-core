@@ -22,13 +22,13 @@ class Api::OrdersController < ApplicationController
         name: item[:name]
       })
     end
-    
-    @order.send_order_to_user()
+
+    # @order.send_order_to_user()
     # TODO: Need error handling here
   end
 
   def order_params
-    params.permit(:id, :total_price, :address, :retailer_id, :status, :distribution_channel, :delivery_fee, :tax_amount)
+    params.permit(:id, :total_price, :address_id, :retailer_id, :status, :distribution_channel, :delivery_fee, :tax_amount)
   end
 
   def order_details_params

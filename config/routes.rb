@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :update]
     resources :orders, only: [:index, :show, :create]
+    resources :addresses, only: [:create, :show]
     resources :verification_documents, only: [:index, :create]
   end
   namespace :admin do

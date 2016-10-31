@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029210223) do
+ActiveRecord::Schema.define(version: 20161030225453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "street_number"
+    t.string   "route"
+    t.string   "primary"
+    t.string   "secondary"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
 
   create_table "order_details", force: :cascade do |t|
     t.decimal  "price"
@@ -44,6 +58,8 @@ ActiveRecord::Schema.define(version: 20161029210223) do
     t.string   "help_desk_ticket_id"
     t.string   "etransfer_link"
     t.string   "carrier_code"
+    t.integer  "address_id"
+    t.index ["address_id"], name: "index_orders_on_address_id", using: :btree
     t.index ["help_desk_ticket_id"], name: "index_orders_on_help_desk_ticket_id", where: "((help_desk_ticket_id)::text <> NULL::text)", using: :btree
     t.index ["retailer_id"], name: "index_orders_on_retailer_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -125,8 +141,10 @@ ActiveRecord::Schema.define(version: 20161029210223) do
     t.index ["user_id"], name: "index_verification_documents_on_user_id", using: :btree
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
+  add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "retailers"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "retailers"

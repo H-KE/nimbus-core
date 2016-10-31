@@ -3,7 +3,7 @@ json.array! @orders do |order|
   json.dispensary_name order.retailer.name
   json.dispensary_email order.retailer.email
   json.dispensary_image order.retailer.image_url
-  json.address order.address
+  json.address_id order.address_id
   json.total_price order.total_price
   json.status order.status
   json.delivery_fee order.delivery_fee
