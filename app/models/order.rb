@@ -11,7 +11,6 @@ class Order < ApplicationRecord
                                                    orderDetails: self.order_details,
                                                    retailer: retailer,
                                                    documents: user.verification_documents,
-                                                   updateUrl: update_url,
                                                    shippingAddress: self.shipping_address })
       response = retailer.create_order_ticket(ticket_html.to_json)
       if response.success?
