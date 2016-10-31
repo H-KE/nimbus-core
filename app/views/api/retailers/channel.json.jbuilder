@@ -7,6 +7,7 @@ json.array! @retailers do |retailer|
   json.avatar_url retailer.image_url
   json.shipping_fee retailer.shipping_fee
   json.free_shipping_cap retailer.free_shipping_cap
+  json.medical retailer.medical
   json.products retailer.products do |product|
     json.id product.id
     json.retailer_id product.retailer_id
