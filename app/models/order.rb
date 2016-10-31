@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   has_many :order_details
   belongs_to :user
   belongs_to :retailer
+  belongs_to :address
 
   def send_order_to_retailer
     if retailer.uses_help_desk?

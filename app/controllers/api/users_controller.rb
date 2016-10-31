@@ -9,9 +9,14 @@ class Api::UsersController < ApplicationController
   def show
     @user = current_api_user
     @documents = @user.verification_documents.all
+    @addresses = @user.addresses.all
   end
 
   def user_params
-    params.permit(:address, :first_name, :last_name, :email)
+    params.permit(:first_name, :last_name, :email)
+  end
+
+  def address_params
+    params.permit(:addresses => [:id, :primary, :secondary, :city, :province, :postal_code])
   end
 end
