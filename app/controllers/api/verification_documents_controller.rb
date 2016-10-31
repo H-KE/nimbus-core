@@ -6,7 +6,7 @@ class Api::VerificationDocumentsController < ApplicationController
   end
 
   def create
-    @document = current_api_user.verification_documents.create(document_params)
+    @document = current_api_user.verification_documents.create!(document_params)
   end
 
   def document_params
