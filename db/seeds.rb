@@ -453,7 +453,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         category: "Cannabis Oil (Tears)"
       },
       {
-        name: ": CO2 60% CBD(600mg) Tears",
+        name: "CO2 60% CBD(600mg) Tears",
         images: ["https://s3.amazonaws.com/media.nimbusfly.co/bailey/Co2_CBD_Syringe_40%25_Single_DSC_3864.jpg"],
         prices: [90.00],
         price_labels: ["each"],
@@ -462,7 +462,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 60,
         subspecies: "",
-        category: "Flowers"
+        category: "Cannabis Oil (Tears)"
       }
     ])
   elsif retailer.name == 'MC Medical'
@@ -645,7 +645,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Concentrate",
-        category: "Extract"
+        category: "Extracts"
       },
       {
         name: "Gold Seal Hash",
@@ -657,7 +657,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Hash",
-        category: "Extract"
+        category: "Extracts"
       },
       {
         name: "QTonic Terpenes",
@@ -669,7 +669,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 0,
         cbd: 0,
         subspecies: "Concentrate",
-        category: "Extract"
+        category: "Extracts"
       },
       {
         name: "Raw c02 Distilite",
@@ -681,7 +681,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         thc: 97,
         cbd: 0,
         subspecies: "Concentrate",
-        category: "Extract"
+        category: "Extracts"
       },
       # {
       #   name: "Pheonix Tears 500mg THC oil",
@@ -692,8 +692,8 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
       #   description: "500 mg thc for oral use great for curing caner and much more.",
       #   thc: 500,
       #   cbd: 0,
-      #   subspecies: "Edible",
-      #   category: "Edible"
+      #   subspecies: "Edibles",
+      #   category: "Edibles"
       # },
       {
         name: "Pure CBD oil 65 mg",
@@ -704,8 +704,8 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         description: "65 mg of CBD for oral use.",
         thc: 0,
         cbd: 65,
-        subspecies: "Edible",
-        category: "Edible"
+        subspecies: "Edibles",
+        category: "Edibles"
       },
       {
         name: "Mota Jelly Candies",
@@ -716,8 +716,8 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         description: "Mota jelly candies multiple flavours and indica and sativa",
         thc: 0,
         cbd: 0,
-        subspecies: "Edible",
-        category: "Edible"
+        subspecies: "Edibles",
+        category: "Edibles"
       },
       {
         name: "Chocolates 50 mg of THC 3 PK",
@@ -728,8 +728,8 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         description: "Some delicious chocolates.",
         thc: 50,
         cbd: 0,
-        subspecies: "Edible",
-        category: "Edible"
+        subspecies: "Edibles",
+        category: "Edibles"
       },
       # {
       #   name: "Pixie Pop (COLA)",
@@ -740,8 +740,8 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
       #   description: "Infused pop 125 mg of THC 6 mg CBD Pixie brand.",
       #   thc: 125,
       #   cbd: 6,
-      #   subspecies: "Edible",
-      #   category: "Edible"
+      #   subspecies: "Edibles",
+      #   category: "Edibles"
       # },
       {
         name: "MJ Creams",
