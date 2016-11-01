@@ -45,12 +45,12 @@ retailers = Retailer.create!([
     image_url: 'https://assets.greenrushdaily.com/wp-content/uploads/2016/01/denver-hosts-cannabis-wedding-expo.jpg',
     name: 'MC Medical',
     address: 'Hamilton, ON',
-    bio: 'Coming Soon',
+    bio: 'Medical Grade Cannabis',
     description: 'We are a mobile medical dispensary that has compassion we deliver in the durham region within 1 hour!! we offer mail order to anywere in Canada please call or email to place an order we offer a range of different strains edibles concentrates and more. Accepted verification documents includes government issued photo ID, MMPR , LP card or doctor prescription.',
     mail: true,
     delivery: false,
     pickup: false,
-    shipping_fee: 20,
+    shipping_fee: 21,
     medical: true,
     email: "peter@nimbusfly.co",
     phone_number: "647-853-8697"
@@ -59,12 +59,12 @@ retailers = Retailer.create!([
     image_url: 'https://s3.amazonaws.com/media.nimbusfly.co/default/bestbudcanada.jpg',
     name: 'Best Bud Canada',
     address: 'Oshawa, ON',
-    bio: 'Coming Soon',
+    bio: 'Premium Medical Marijuana',
     description: 'Based in Hamilton, Ontario Canada, Best BUD Canada is dedicated to providing a safe, practical and discreet access to medicinal cannabis and cannabis-related products at affordable prices to qualified members. We are committed to providing the best possible healthcare and simplest order process for our valued members. The use of this website is limited to Canadian residents over the age of 19 who possess valid medical documentation from a Health Care Practitioner of a diagnosis and related symptom/s for which cannabis has potential medical applications.',
     mail: true,
     delivery: true,
     pickup: true,
-    shipping_fee: 21,
+    shipping_fee: 20,
     medical: true,
     email: "peter@nimbusfly.co",
     phone_number: "647-853-8697"
@@ -113,7 +113,7 @@ retailers.each do |retailer|
 Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol.",
         thc: 68,
         cbd: 0.35,
-        subspecies: "Hybrid",
+        subspecies: "",
         category: "Vaporizers"
       },
       {
@@ -130,7 +130,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
  Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol.",
         thc: 68,
         cbd: 0.35,
-        subspecies: "Hybrid",
+        subspecies: "",
         category: "Cartridges"
       },
       {
@@ -145,7 +145,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
  Cannabinol (CBN)",
         thc: 42,
         cbd: 8,
-        subspecies: "Hybrid",
+        subspecies: "",
         category: "Cartridges"
       }
     ])
@@ -704,7 +704,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         description: "65 mg of CBD for oral use.",
         thc: 0,
         cbd: 65,
-        subspecies: "Edibles",
+        subspecies: "",
         category: "Edibles"
       },
       {
@@ -716,7 +716,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         description: "Mota jelly candies multiple flavours and indica and sativa",
         thc: 0,
         cbd: 0,
-        subspecies: "Edibles",
+        subspecies: "",
         category: "Edibles"
       },
       {
@@ -728,7 +728,7 @@ Ingredients: Pure CO2 Extracted Cannabis Oil Processed with Food Grade Ethanol."
         description: "Some delicious chocolates.",
         thc: 50,
         cbd: 0,
-        subspecies: "Edibles",
+        subspecies: "",
         category: "Edibles"
       },
       # {
