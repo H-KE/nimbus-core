@@ -39,8 +39,7 @@ class Order < ApplicationRecord
 
   def shipping_address
     address = self.address
-    @shipping_address = address.primary + ', ' +
-                        address.secondary + ', ' +
+    @shipping_address = address.primary + ' ' +address.secondary + ', ' +
                         address.city + ', ' +
                         address.province + ', ' +
                         address.postal_code
