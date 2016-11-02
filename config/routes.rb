@@ -24,5 +24,10 @@ Rails.application.routes.draw do
         post :update
       end
     end
+    resources :weedmaps, only: [] do
+      collection do
+        get :parse_menu
+      end
+    end
   end
 end

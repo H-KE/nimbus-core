@@ -27,6 +27,14 @@ class Retailer < ApplicationRecord
     end
   end
 
+  def persist_menu(menu)
+
+  end
+
+  def clear_menu(date_created)
+
+  end
+
   def uses_help_desk?
     help_desk_type != "NONE"
   end
