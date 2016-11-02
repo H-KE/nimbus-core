@@ -51,6 +51,7 @@ retailers = Retailer.create!([
     delivery: false,
     pickup: false,
     shipping_fee: 21,
+    free_shipping_cap: 350,
     medical: true,
     email: "peter@nimbusfly.co",
     phone_number: "647-853-8697"

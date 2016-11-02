@@ -10,7 +10,7 @@ json.array! @orders do |order|
   json.tax_amount order.tax_amount
   json.carrier_code order.carrier_code
   json.tracking_number order.tracking_number
-
+  json.created_at order.created_at
   json.order_details order.order_details.all do |item|
     json.name item.name
     json.price item.price
