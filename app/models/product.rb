@@ -13,5 +13,4 @@ class Product < ApplicationRecord
                           "Extracts",
                           "Gear",
                           "Vaporizers"]
-  has_many :order_details
 end
