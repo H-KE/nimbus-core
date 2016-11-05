@@ -5,6 +5,7 @@ json.dispensary_image @order.retailer.image_url
 json.address @order.address
 json.total_price @order.total_price
 json.status @order.status
+json.status_detail @order.status_detail
 json.delivery_fee @order.delivery_fee
 json.tax_amount @order.tax_amount
 json.carrier_code @order.carrier_code

@@ -129,12 +129,26 @@ a[class="bulletproof-button"] {
 	        											  <input type="submit" value="Packaging" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
 	          										</form>
 	                            </td>
+														</tr>
+														<tr>
+															<td>
+																<br>
+																Or
+															</td>
+														</tr>
+														<tr>
 	                            <td align="center">
 	                              <form method="post" action="<%= url_for(controller: 'admin/orders',
 	                  													action: 'update') %>">
-	                                <input type="hidden" name="id" value="<%= @order.id %>">
-	        												<input type="hidden" name="status" value="declined">
-	        											  <input type="submit" value="Declined" class="bulletproof-button" target="_blank" style="background-color:red; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
+																	<input type="submit" value="Declined" class="bulletproof-button" target="_blank" style="background-color:red; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;"> Due to:
+																	<select name="status_detail">
+																		<option selected="selected" value="invalid_id">Invalid government ID</option>
+	        											    <option value="invalid_medical_doc">Invalid medical documents</option>
+																		<option value="invalid_payment">Could not deposit payment</option>
+																		<option value="out_of_stock">Out of stock for one or more ordered items</option>
+		                                <input type="hidden" name="id" value="<%= @order.id %>">
+		        												<input type="hidden" name="status" value="declined">
+																	</select>
 	          										</form>
 	                            </td>
 	                          </tr>

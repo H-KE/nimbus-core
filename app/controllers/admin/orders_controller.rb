@@ -17,13 +17,12 @@ class Admin::OrdersController < ApplicationController
         @order.send_order_to_retailer()
       end
     rescue => e
-      @order.update(status: 'error')
       # TODO: hook up slack/email notifier here to let us know an error has occured
       render :plain => e and return
     end
   end
 
   def order_params
-    params.permit(:id, :status, :carrier_code, :tracking_number, :etransfer_link)
+    params.permit(:id, :status, :status_detail, :carrier_code, :tracking_number, :etransfer_link)
   end
 end
