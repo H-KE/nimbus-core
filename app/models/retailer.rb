@@ -56,8 +56,7 @@ class Retailer < ApplicationRecord
   def clear_menu(update_date)
     menu_update_date = update_date.to_datetime
     if menu_update_date
-      products.where("created_at > ?", menu_update_date).destroy_all # TODO: Comparison should be inverted, this is for testing/forcing the issue purposes
-    else
+      products.where("created_at < ?", menu_update_date).destroy_all
       return false
     end
   end
