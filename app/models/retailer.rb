@@ -27,7 +27,71 @@ class Retailer < ApplicationRecord
     end
   end
 
+  def persist_menu(menu)
+    if clear_menu(menu["menu_updated"])
+      menu["categories"].each do |category|
+        valid_category = validate_category category["title"]
+        category["items"].each do |item|
+          products.create!({
+            name: item["name"].titleize,
+            images: [item["image_url"].nil? ? default_image_url(valid_category) : item["image_url"]],
+            prices: item["prices"].delete_if{|_,v| v == 0}.values,
+            price_labels: item["prices"].keys.map(& :titleize),
+            description: item["body"],
+            thc: 0,
+            cbd: 0,
+            category: valid_category
+          })
+        end
+      end
+    end
+  end
+
   def uses_help_desk?
     help_desk_type != "NONE"
+  end
+
+  private
+
+  def clear_menu(update_date)
+    menu_update_date = update_date.to_datetime
+    if menu_update_date
+      products.where("created_at > ?", menu_update_date).destroy_all # TODO: Comparison should be inverted, this is for testing/forcing the issue purposes
+    else
+      return false
+    end
+  end
+
+  def validate_category category
+    Product::VALID_CATEGORY_NAMES.include?(category) ? category : category.pluralize
+  end
+
+
+
+  def default_image_url category
+    case category
+    when "Indica"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/indica.jpg"
+    when "Sativa"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/sativa.jpg"
+    when "Hybrid"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/hybrid.jpg"
+    when "Pre-rolls"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/prerolls.jpg"
+    when "Prerolls"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/prerolls.jpg"
+    when "Concentrates"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/shatter.png"
+    when "Cannabis Oil (Tears)"
+      "https://s3.amazonaws.com/media.nimbusfly.co/bailey/Co2_CBD_Syringe_40%25_Single_DSC_3864.jpg"
+    when "Edibles"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/edibles"
+    when "Capsules"
+      "https://s3.amazonaws.com/media.nimbusfly.co/bailey/Co2_CBD_10mg_CloseUp_DSC_3871.jpg"
+    when "Extracts"
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/shatter.png"
+    else
+      "https://s3.amazonaws.com/media.nimbusfly.co/default/default.jpg"
+    end
   end
 end
