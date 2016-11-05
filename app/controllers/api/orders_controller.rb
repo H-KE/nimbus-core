@@ -15,12 +15,7 @@ class Api::OrdersController < ApplicationController
     @order = @user.orders.create!(order_params)
 
     order_details_params[:order_details].each do |item|
-      @order.order_details.create({
-        product_id: item[:id],
-        price: item[:price],
-        quantity: item[:quantity],
-        name: item[:name]
-      })
+      @order.order_details.create(item)
     end
 
     @order.send_order_to_user()
@@ -32,6 +27,6 @@ class Api::OrdersController < ApplicationController
   end
 
   def order_details_params
-    params.permit(:order_details => [:id, :price, :quantity, :name])
+    params.permit(:order_details => [:price, :quantity, :name, :thumbnail,  :images => []])
   end
 end

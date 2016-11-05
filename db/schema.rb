@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031002249) do
+ActiveRecord::Schema.define(version: 20161105181424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20161031002249) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "order_id"
-    t.integer  "product_id"
     t.string   "name"
+    t.json     "images"
+    t.string   "thumbnail"
     t.index ["order_id"], name: "index_order_details_on_order_id", using: :btree
-    t.index ["product_id"], name: "index_order_details_on_product_id", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -146,7 +146,6 @@ ActiveRecord::Schema.define(version: 20161031002249) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "order_details", "orders"
-  add_foreign_key "order_details", "products"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "retailers"
   add_foreign_key "orders", "users"
