@@ -14,12 +14,13 @@ class Admin::OrdersController < ApplicationController
       @order.update(order_params)
       @order.send_user_status_update()
       if order_params[:etransfer_link].present?
-        @order.send_order_to_retailer()
+        begin
+          RetailerMailer.order_confirmation_email(self, "orders@nimbusfly.com").deliver
+          RetailerMailer.order_confirmation_email(self, retailer[:email]).deliver
+        rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+          notifier.ping "Uh oh! Order confirmation e-mail to " + @order.retailer.name + " for order: " + @order.id.to_s + "failed."
+        end
       end
-    rescue => e
-      # TODO: hook up slack/email notifier here to let us know an error has occured
-      render :plain => e and return
-    end
   end
 
   def order_params
