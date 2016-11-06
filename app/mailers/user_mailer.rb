@@ -26,4 +26,11 @@ class UserMailer < ApplicationMailer
     mail( :to => @user[:email],
           :subject => '[NIMBUS] ' + @user[:first_name] + ', your order from ' + @retailer[:name] + ' was updated to ' + @order.readable_status + '!')
   end
+
+  def support_ticket_email(user, ticket_type, message)
+    @message = message
+
+    mail( :to => 'help@nimbusfly.co',
+          :subject => "[NIMBUS HELP TICKET] User ##{user[:id]}, " + user[:first_name] + " " + user[:last_name] + ", sent a " + ticket_type + " ticket!")
+  end
 end
