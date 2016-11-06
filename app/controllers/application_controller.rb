@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session
 
-  Stripe.api_key="sk_test_dbEMU2gXmZQz5qiAA96anzuD"
-
   def new
    initialize_resource
   end
@@ -22,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def destroy
    resource.destroy!
+  end
+
+  def set_notification
+    request.env['exception_notifier.exception_data'] = {"server" => request.env['SERVER_NAME']}
   end
 
   protected
