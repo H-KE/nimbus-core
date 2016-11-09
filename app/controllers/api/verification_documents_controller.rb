@@ -9,7 +9,11 @@ class Api::VerificationDocumentsController < ApplicationController
     @document = current_api_user.verification_documents.create!(document_params)
   end
 
+  def destroy
+    @document = VerificationDocument.find(document_params[:id]).destroy
+  end
+
   def document_params
-    params.permit(:verification_type, :verification_url)
+    params.permit(:verification_type, :verification_url, :id)
   end
 end

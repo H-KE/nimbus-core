@@ -20,7 +20,6 @@ class Api::OrdersController < ApplicationController
 
     @order.send_order_to_user()
     Sunwukong.notifier.ping("A new order for " + @order.retailer.name + " was placed! Order: " + @order.id.to_s + " | Total: " + @order.total_price.to_s)
-    # TODO: Need error handling here
   end
 
   def order_params
