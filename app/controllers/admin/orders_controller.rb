@@ -15,12 +15,14 @@ class Admin::OrdersController < ApplicationController
       @order.send_user_status_update()
       if order_params[:etransfer_link].present?
         begin
-          RetailerMailer.order_confirmation_email(self, "orders@nimbusfly.com").deliver
-          RetailerMailer.order_confirmation_email(self, retailer[:email]).deliver
+          RetailerMailer.order_confirmation_email(@order, "orders@nimbusfly.co").deliver
+          RetailerMailer.order_confirmation_email(@order, @order.retailer[:email]).deliver
+          Sunwukong.notifier.ping("Payment has been received and sent for order: " + @order.id.to_s, channel: '#payments')
         rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
-          notifier.ping "Uh oh! Order confirmation e-mail to " + @order.retailer.name + " for order: " + @order.id.to_s + "failed."
+          Sunwukong.notifier.ping "Uh oh! Order confirmation e-mail to " + @order.retailer.name + " for order: " + @order.id.to_s + "failed."
         end
       end
+    end
   end
 
   def order_params
