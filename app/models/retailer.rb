@@ -57,8 +57,9 @@ class Retailer < ApplicationRecord
     menu_update_date = update_date.to_datetime
     if menu_update_date
       products.where("created_at < ?", menu_update_date).destroy_all
-      return false
+      return true
     end
+    return false
   end
 
   def validate_category category
