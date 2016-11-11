@@ -2,6 +2,8 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(order_params[:id])
     @order_params = order_params;
+    Sunwukong.notifier.ping("Order status has been updated to: " + @order.status + " for order: " + @order.id.to_s)
+
     # TODO: this is a temp workaround before a full on admin page for order is created
     # currently, we are display the order manage page corresponding to the request status
   end
