@@ -2,8 +2,6 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(order_params[:id])
     @order_params = order_params;
-    Sunwukong.notifier.ping("Order status has been updated to: " + @order.status + " for order: " + @order.id.to_s)
-
     # TODO: this is a temp workaround before a full on admin page for order is created
     # currently, we are display the order manage page corresponding to the request status
   end
@@ -15,6 +13,7 @@ class Admin::OrdersController < ApplicationController
     begin
       @order.update(order_params)
       @order.send_user_status_update()
+      Sunwukong.notifier.ping("Order status has been updated to: " + @order.status + " for order: " + @order.id.to_s)
       if order_params[:etransfer_link].present?
         begin
           RetailerMailer.order_confirmation_email(@order, "orders@nimbusfly.co").deliver
