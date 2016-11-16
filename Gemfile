@@ -19,7 +19,6 @@ gem 'jbuilder', '~> 2.6'
 
 # For authenticating the user
 gem 'devise_token_auth'
-gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
