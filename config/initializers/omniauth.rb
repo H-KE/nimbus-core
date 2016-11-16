@@ -21,6 +21,28 @@ DeviseTokenAuth::OmniauthCallbacksController.module_eval do
 
   end
 
+  def omniauth_success
+    get_resource_from_auth_hash
+    create_token_info
+    set_token_on_resource
+    create_auth_params
+
+    if resource_class.devise_modules.include?(:confirmable)
+      # don't send confirmation email!!!
+      @resource.skip_confirmation!
+    end
+
+    sign_in(:user, @resource, store: false, bypass: false)
+    binding.pry
+    Sunwukong.notifier.ping("A new user has signed up! Please welcome " + current_api_user.name + " to Nimbus. User number: " + current_api_user.id.to_s, channel: '#users')
+
+    @resource.save!
+
+    yield @resource if block_given?
+
+    render_data_or_redirect('deliverCredentials', @auth_params.as_json, @resource.as_json)
+  end
+
   def redirect_callbacks
 
     # derive target redirect route from 'resource_class' param, which was set
@@ -60,5 +82,16 @@ DeviseTokenAuth::OmniauthCallbacksController.module_eval do
       # a generic message.
       fallback_render data[:error] || 'An error occurred'
     end
+  end
+
+  def assign_provider_attrs(user, auth_hash)
+    user.assign_attributes({
+      nickname: auth_hash['info']['nickname'],
+      name:     auth_hash['info']['name'],
+      first_name: auth_hash['info']['name'].split(' ', 2)[0],
+      last_name: auth_hash['info']['name'].split(' ', 2)[1],
+      image:    auth_hash['info']['image'],
+      email:    auth_hash['info']['email']
+    })
   end
 end

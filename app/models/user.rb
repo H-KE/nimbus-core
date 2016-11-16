@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   has_many :addresses
 
   def fullname
-    first_name + " " + last_name
+    name || first_name + " " + last_name
   end
 end
