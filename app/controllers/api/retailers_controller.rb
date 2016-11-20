@@ -2,7 +2,7 @@ class Api::RetailersController < ApplicationController
   before_action :authenticate_api_user!
 
   def index
-    @retailers = Retailer.all.order(:id)
+    @retailers = Retailer.all.order(:updated_at)
   end
 
   def show
