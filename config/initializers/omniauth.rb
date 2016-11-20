@@ -33,7 +33,6 @@ DeviseTokenAuth::OmniauthCallbacksController.module_eval do
     end
 
     sign_in(:user, @resource, store: false, bypass: false)
-    binding.pry
     Sunwukong.notifier.ping("A new user has signed up! Please welcome " + current_api_user.name + " to Nimbus. User number: " + current_api_user.id.to_s, channel: '#users')
 
     @resource.save!
