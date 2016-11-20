@@ -3,4 +3,8 @@ class RetailerMailerPreview < ActionMailer::Preview
   def order_confirmation_email
     RetailerMailer.order_confirmation_email(Order.last, "preview@gmail.com")
   end
+
+  def pickup_confirmation_email
+    RetailerMailer.pickup_confirmation_email(Order.last, "preview@gmail.com")
+  end
 end

@@ -16,8 +16,13 @@ class Admin::OrdersController < ApplicationController
       Sunwukong.notifier.ping("Order status has been updated to: " + @order.status + " for order: " + @order.id.to_s)
       if order_params[:etransfer_link].present?
         begin
-          RetailerMailer.order_confirmation_email(@order, "orders@nimbusfly.co").deliver
-          RetailerMailer.order_confirmation_email(@order, @order.retailer[:email]).deliver
+          if @order.distribution_channel == 'mail'
+            RetailerMailer.order_confirmation_email(@order, "orders@nimbusfly.co").deliver
+            RetailerMailer.order_confirmation_email(@order, @order.retailer[:email]).deliver
+          elsif @order.distribution_channel == 'pickup'
+            RetailerMailer.pickup_confirmation_email(@order, "orders@nimbusfly.co").deliver
+            RetailerMailer.pickup_confirmation_email(@order, @order.retailer[:email]).deliver
+          end
           Sunwukong.notifier.ping("Payment has been received and sent for order: " + @order.id.to_s, channel: '#payments')
         rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
           Sunwukong.notifier.ping "Uh oh! Order confirmation e-mail to " + @order.retailer.name + " for order: " + @order.id.to_s + "failed."

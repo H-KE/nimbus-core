@@ -88,11 +88,11 @@ a[class="bulletproof-button"] {
 	        											    <option value="fedex">FedEx</option>
 	        											    <option value="ups">UPS</option>
 																	<% elsif @order.carrier_code == 'fedex' %>
-																		<option alue="canada_post">Canada Post</option>
+																		<option value="canada_post">Canada Post</option>
 																		<option selected="selected" value="fedex">FedEx</option>
 																		<option value="ups">UPS</option>
 																	<% elsif @order.carrier_code == 'ups' %>
-																		<option alue="canada_post">Canada Post</option>
+																		<option value="canada_post">Canada Post</option>
 																		<option value="fedex">FedEx</option>
 																		<option selected="selected" value="ups">UPS</option>
 																	<% else %>
@@ -112,6 +112,18 @@ a[class="bulletproof-button"] {
         											</td>
         										</form>
                           </tr>
+                        <% elsif @order_params[:status] == 'completed' %>
+													<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+														<td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+															<h1 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 32px; color: #000; line-height: 1.2em; font-weight: 500; text-align: center; margin: 40px 0 0;">Update Successful!</h1>
+														</td>
+													</tr>
+													<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+														<td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+															<h2 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;">Order #<%= @order.id %> has been set to <b>Complete</b>.</h2>
+														</td>
+													</tr>
+													<% @order.update(status: 'completed') %>
                         <% else %>
                           <h2 align="center" class="aligncenter" style="font-family: 'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;">Current Order Status</h2>
                           <br>
@@ -120,16 +132,29 @@ a[class="bulletproof-button"] {
 													</p>
 													<% if @order.status == 'verifying' %>
 														<p>Update Status To:</p>
-	                          <tr>
-	                            <td align="center">
-	                              <form method="post" action="<%= url_for(controller: 'admin/orders',
-	                  													action: 'update') %>">
-	                                <input type="hidden" name="id" value="<%= @order.id %>">
-	        												<input type="hidden" name="status" value="packaging">
-	        											  <input type="submit" value="Packaging" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
-	          										</form>
-	                            </td>
-														</tr>
+															<% if @order.distribution_channel == 'mail' %>
+			                          <tr>
+			                            <td align="center">
+			                              <form method="post" action="<%= url_for(controller: 'admin/orders',
+			                  													action: 'update') %>">
+			                                <input type="hidden" name="id" value="<%= @order.id %>">
+			        												<input type="hidden" name="status" value="packaging">
+			        											  <input type="submit" value="Packaging" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
+			          										</form>
+			                            </td>
+																</tr>
+															<% elsif @order.distribution_channel == 'pickup' %>
+																<tr>
+																	<td align="center">
+																		<form method="post" action="<%= url_for(controller: 'admin/orders',
+																									action: 'update') %>">
+																			<input type="hidden" name="id" value="<%= @order.id %>">
+																			<input type="hidden" name="status" value="ready">
+																			<input type="submit" value="Ready for pick up" class="bulletproof-button" target="_blank" style="background-color:#1188e6; height: px; width: px; font-size: 16px; line-height: px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; padding: 8px 18px 8px 18px; text-decoration: none; color: #ffffff; text-decoration: none; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #1288e5; display: inline-block;">
+																		</form>
+																	</td>
+																</tr>
+															<% end %>
 														<tr>
 															<td>
 																<br>
