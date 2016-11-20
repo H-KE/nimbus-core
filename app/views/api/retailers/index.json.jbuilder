@@ -11,6 +11,7 @@ json.array! @retailers do |retailer|
   json.pickup retailer.pickup
   json.mail retailer.mail
   json.delivery retailer.delivery
+  json.phone_number retailer.phone_number
   json.products retailer.products do |product|
     json.id product.id
     json.retailer_id product.retailer_id
