@@ -7,6 +7,7 @@ json.total_price @order.total_price
 json.status @order.status
 json.delivery_fee @order.delivery_fee
 json.tax_amount @order.tax_amount
+json.distribution_channel @order.distribution_channel
 json.created_at @order.created_at
 json.order_details @order.order_details.all do |item|
   json.name item.name
