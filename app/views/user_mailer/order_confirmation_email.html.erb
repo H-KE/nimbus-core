@@ -81,7 +81,9 @@ background-color: #f6f6f6;
 											<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
 												<td style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 5px 0;" valign="top"><b>By: </b><%= @user[:first_name]%> <%= @user[:last_name]%><br style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />
 												<b>Delivery Type: </b><%= @order[:distribution_channel] %><br style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />
-												<b>Deliver To: </b><%= @shippingAddress %><br style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />
+												<% if @order[:distribution_channel] == 'mail'%>
+													<b>Deliver To: </b><%= @shippingAddress %><br style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />
+												<% end %>
 												<b>Created At: </b><%= @order[:created_at] %></td>
 											</tr>
 											<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
