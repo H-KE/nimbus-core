@@ -10,7 +10,7 @@ class RetailerMailer < ApplicationMailer
     @documents = @user.verification_documents
 
     mail( :to => sendTo,
-          :subject => '[NIMBUS] ' + @user[:first_name] + ' has placed a ' + @order[:distribution_channel] + ' order' )
+          :subject => "[NIMBUS Order ##{@order[:id]}] " + @user[:first_name] + " has placed a " + @order[:distribution_channel] + " order" )
   end
 
   def pickup_confirmation_email(order, sendTo)
@@ -22,6 +22,6 @@ class RetailerMailer < ApplicationMailer
     @documents = @user.verification_documents
 
     mail( :to => sendTo,
-          :subject => '[NIMBUS] ' + @user[:first_name] + ' has placed a ' + @order[:distribution_channel] + ' order' )
+          :subject => "[NIMBUS Order ##{@order[:id]}] " + @user[:first_name] + " has placed a " + @order[:distribution_channel] + " order" )
   end
 end
