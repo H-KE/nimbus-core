@@ -1,7 +1,8 @@
 class Retailer < ApplicationRecord
   has_many :products
   has_many :orders
-
+  has_many :admins
+    
   def create_order_ticket(html)
     due_date = DateTime.now + 1
     conn = Faraday.new(:url => help_desk_api_url) do |faraday|

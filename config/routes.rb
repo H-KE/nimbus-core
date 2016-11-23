@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for 'User', at: 'auth', controllers: {
       :registrations => "custom/registrations"
     }
+    mount_devise_token_auth_for 'Admin', at: 'admin/auth'
     resources :products, only: [:show]
     resources :retailers, only: [:index, :show] do
       collection do
@@ -20,6 +21,10 @@ Rails.application.routes.draw do
     resources :addresses, only: [:create, :show]
     resources :verification_documents, only: [:index, :create, :destroy]
     resources :tickets, only: [:create]
+
+    namespace :admin do
+      resources :orders, only: [:index]
+    end
   end
   namespace :admin do
     resources :orders, only: [:show] do
