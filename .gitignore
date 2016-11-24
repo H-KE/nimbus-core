@@ -16,3 +16,6 @@ logfile
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore public files
+/public/*

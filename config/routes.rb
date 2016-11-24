@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
   namespace :admin do
-    resources :orders, only: [:show] do
+    resources :orders, only: [:show, :index] do
       collection do
         post :update
       end

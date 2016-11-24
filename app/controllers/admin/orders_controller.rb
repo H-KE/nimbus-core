@@ -1,4 +1,8 @@
 class Admin::OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+  end
+
   def show
     @order = Order.find(order_params[:id])
     @order_params = order_params;
