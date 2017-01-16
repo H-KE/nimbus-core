@@ -91,7 +91,6 @@ a[class="bulletproof-button"] {
 												<tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
 													<td style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 5px 0;" valign="top">
 														<b>By: </b><%= @user[:first_name]%> <%= @user[:last_name]%><br style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />
-														<b>Delivery Type: </b><%= @order[:distribution_channel] %><br style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />
 														<b>Deliver To: </b><%= @shippingAddress %><br style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;" />
 														<b>Created At: </b><%= @order[:created_at] %>
 													</td>
@@ -113,10 +112,6 @@ a[class="bulletproof-button"] {
 																<tr class="delivery_fee" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
 																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; margin: 0; padding: 5px 0;" valign="top" width="80%">Delivery fee: </td>
 																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; margin: 0; padding: 5px 0;" valign="top">$ <%= @order[:delivery_fee] %></td>
-																</tr>
-																<tr class="tax_amount" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
-																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; margin: 0; padding: 5px 0;" valign="top" width="80%">Sales Tax (13.0%): </td>
-																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; margin: 0; padding: 5px 0;" valign="top">$ <%= @order[:tax_amount] %></td>
 																</tr>
 																<tr class="total" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
 																	<td align="right" class="alignright" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: right; border-bottom-color: #333; border-bottom-width: 2px; border-bottom-style: solid; font-weight: 700; margin: 0; padding: 5px 0;" valign="top" width="80%">Total</td>
