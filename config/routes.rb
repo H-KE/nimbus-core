@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :orders, only: [:index]
+      resources :retailers, only: [:show] do
+        resources :products, only: [:index]
+      end
     end
   end
   namespace :admin do
