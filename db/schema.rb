@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126032950) do
+ActiveRecord::Schema.define(version: 20170121160733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,21 @@ ActiveRecord::Schema.define(version: 20161126032950) do
     t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true, using: :btree
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "title",            limit: 50, default: ""
+    t.text     "comment"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.integer  "user_id"
+    t.string   "role",                        default: "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rating"
+    t.index ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+    t.index ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
   create_table "order_details", force: :cascade do |t|
     t.decimal  "price"
     t.string   "quantity"
@@ -102,8 +117,8 @@ ActiveRecord::Schema.define(version: 20161126032950) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "retailer_id"
     t.json     "images"
     t.json     "prices"
@@ -114,6 +129,7 @@ ActiveRecord::Schema.define(version: 20161126032950) do
     t.string   "category"
     t.string   "thumbnail"
     t.integer  "stock"
+    t.decimal  "rating",       default: "0.0"
     t.index ["retailer_id"], name: "index_products_on_retailer_id", using: :btree
   end
 
@@ -136,6 +152,7 @@ ActiveRecord::Schema.define(version: 20161126032950) do
     t.string   "bio"
     t.decimal  "free_shipping_cap"
     t.boolean  "medical",           default: false,  null: false
+    t.decimal  "rating",            default: "0.0"
   end
 
   create_table "users", force: :cascade do |t|

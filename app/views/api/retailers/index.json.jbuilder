@@ -12,6 +12,13 @@ json.array! @retailers do |retailer|
   json.mail retailer.mail
   json.delivery retailer.delivery
   json.phone_number retailer.phone_number
+  json.rating retailer.rating
+  json.reviews retailer.comments.all do |comment|
+    json.title comment.title
+    json.comment comment.comment
+    json.rating comment.rating
+    json.name comment.user.first_name
+  end
   json.products retailer.products do |product|
     json.id product.id
     json.retailer_id product.retailer_id
@@ -25,5 +32,12 @@ json.array! @retailers do |retailer|
     json.cbd product.cbd
     json.subspecies product.subspecies
     json.category product.category
+    json.rating product.rating
+    json.reviews product.comments.all do |comment|
+      json.title comment.title
+      json.comment comment.comment
+      json.rating comment.rating
+      json.name comment.user.first_name
+    end
   end
 end

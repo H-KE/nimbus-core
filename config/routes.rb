@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:create, :show]
     resources :verification_documents, only: [:index, :create, :destroy]
     resources :tickets, only: [:create]
+    resources :comments, only: [:create]
 
     namespace :admin do
       resources :orders, only: [:index]
