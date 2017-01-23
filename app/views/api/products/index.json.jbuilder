@@ -12,4 +12,10 @@ json.array! @products do |product|
   json.subspecies product.subspecies
   json.category product.category
   json.stock product.stock
+  json.reviews product.comments.all do |comment|
+    json.title comment.title
+    json.comment comment.comment
+    json.rating comment.rating
+    json.name comment.user.first_name
+  end
 end

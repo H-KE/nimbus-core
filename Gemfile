@@ -46,6 +46,12 @@ gem 'exception_notification'
 # Now our app can talk to us
 gem 'slack-notifier'
 
+# Dump database into rb file
+gem 'seed_dump'
+
+# Self-explanatory
+gem 'acts_as_commentable'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
