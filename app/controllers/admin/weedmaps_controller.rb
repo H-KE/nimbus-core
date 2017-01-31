@@ -5,20 +5,7 @@ class Admin::WeedmapsController < ApplicationController
     @retailer.persist_menu @response
   end
 
-  def weedmaps_menu(menu_path)
-    conn = Faraday.new(:url => 'https://weedmaps.com') do |faraday|
-      faraday.response :logger                  # log requests to STDOUT
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-    end
-
-    response = conn.get do |req|
-      req.url menu_path
-    end
-
-    JSON.parse(response.body)
-  end
-
-  def add_dispensary()
+  def add_dispensary
     # TODO: Use this to add retailers
     @retailer = Retailer.create!({
         image_url: 'https://s3.amazonaws.com/media.nimbusfly.co/default/default.jpg',
@@ -34,6 +21,27 @@ class Admin::WeedmapsController < ApplicationController
         phone_number: "666-666-6666",
         medical: false
       })
+  end
+
+  def update_all_menus
+    Retailer.all.each do |retailer|
+      retailer.persist_menu weedmaps_menu(retailer.weedmaps_listing) if retailer.weedmaps_listing
+    end
+  end
+
+  private
+
+  def weedmaps_menu(menu_path)
+    conn = Faraday.new(:url => 'https://weedmaps.com') do |faraday|
+      faraday.response :logger                  # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+    end
+
+    response = conn.get do |req|
+      req.url menu_path
+    end
+
+    JSON.parse(response.body)
   end
 
   def parse_menu_params

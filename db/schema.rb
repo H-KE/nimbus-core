@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121160733) do
+ActiveRecord::Schema.define(version: 20170123010556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20170121160733) do
     t.decimal  "free_shipping_cap"
     t.boolean  "medical",           default: false,  null: false
     t.decimal  "rating",            default: "0.0"
+    t.string   "weedmaps_listing"
   end
 
   create_table "users", force: :cascade do |t|

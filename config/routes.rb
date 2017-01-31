@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :weedmaps, only: [] do
       collection do
         get :parse_menu
+        get :update_all_menus
         post :add_dispensary
       end
     end
