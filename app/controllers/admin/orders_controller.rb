@@ -12,15 +12,17 @@ class Admin::OrdersController < ApplicationController
 
   def update_etransfer
     @order = Order.find parse_order
-    @order.update(payment_received: true, status: 'verifying', etransfer_link: parse_link)
-    @order.send_user_status_update()
-    begin
-      RetailerMailer.order_confirmation_email(@order, "orders@nimbusfly.co").deliver
-      RetailerMailer.order_confirmation_email(@order, @order.retailer[:email]).deliver
-      @order.update!(payment_received: true)
-      Sunwukong.notifier.ping("Payment has been received and sent for order: " + @order.id.to_s, channel: '#payments')
-    rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
-      Sunwukong.notifier.ping "Uh oh! Order confirmation e-mail to " + @order.retailer.name + " for order: " + @order.id.to_s + "failed."
+    unless @order.payment_received
+      @order.update(payment_received: true, status: 'verifying', etransfer_link: parse_link)
+      @order.send_user_status_update()
+      begin
+        RetailerMailer.order_confirmation_email(@order, "orders@nimbusfly.co").deliver
+        RetailerMailer.order_confirmation_email(@order, @order.retailer[:email]).deliver
+        Sunwukong.notifier.ping("Payment has been received and sent for order: " + @order.id.to_s, channel: '#payments')
+      rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+        Sunwukong.notifier.ping "Uh oh! Order confirmation e-mail to " + @order.retailer.name + " for order: " + @order.id.to_s + "failed."
+      end
+      @order
     end
   end
 
