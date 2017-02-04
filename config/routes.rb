@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :index] do
       collection do
         post :update
+        post :update_etransfer
       end
     end
     resources :weedmaps, only: [] do
