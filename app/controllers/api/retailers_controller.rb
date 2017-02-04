@@ -2,7 +2,7 @@ class Api::RetailersController < ApplicationController
   # before_action :authenticate_api_user!
 
   def index
-    @retailers = Retailer.all.order(:created_at)
+    @retailers = Retailer.all.where.not(bio: 'hidden').order(:created_at)
   end
 
   def show
