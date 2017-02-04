@@ -1,6 +1,10 @@
 class Retailer < ApplicationRecord
   acts_as_commentable
-  
+
+  scope :hidden, -> { where(bio: 'hidden') }
+  scope :coming_soon, -> { where(bio: 'Coming soon') }
+  scope :active, -> { where.not(bio: 'Coming soon') }
+
   has_many :products
   has_many :orders
   has_many :admins

@@ -2,7 +2,8 @@ class Api::RetailersController < ApplicationController
   # before_action :authenticate_api_user!
 
   def index
-    @retailers = Retailer.all.where.not(bio: 'hidden').order(:created_at)
+    @active_retailers = Retailer.active
+    @inactive_retailers = Retailer.coming_soon
   end
 
   def show
