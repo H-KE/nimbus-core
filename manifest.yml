@@ -13,7 +13,7 @@
 #PRODUCTION##
 ---
 applications:
-- name: nimbus-app
+- name: on-demand
   memory: 512M
   instances: 1
   path: .
@@ -23,4 +23,4 @@ applications:
     RAILS_ENV: production
     RACK_ENV: production
   services:
-    - nimbus-postgres
+    - on-demand-db
